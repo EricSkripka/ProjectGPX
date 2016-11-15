@@ -16,12 +16,11 @@
 
 
 Kes ütles mäju????
-<<<<<<< HEAD
+
 Kass ütles mäju
-=======
 
 
 
 
 Black lives matter
->>>>>>> b22510de2de4241a9afffecc0b0171f9735be529
+b22510de2de4241a9afffecc0b0171f9735be529
