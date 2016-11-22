@@ -104,7 +104,8 @@ if(isset($_GET["searching"])){
 
 
 ?>
-<h1>DATA<h1>
+
+<h1>DATA<h1><?php require("header.php");?>
 	
 <p>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</p>
 <p>Kasutajanimi: <a href="user.php"><?=$_SESSION["userName"];?></a></p>

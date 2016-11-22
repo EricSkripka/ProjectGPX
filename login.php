@@ -135,6 +135,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 ?>
 
 <!DOCTYPE html>
+<?php require("header.php");?>
 <html>
 <head>
 

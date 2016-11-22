@@ -36,6 +36,7 @@ if(isset($_GET["delete"])){
 //mysql-i käsk: WHERE deleted IS NULL
 	
 ?>
+<?php require("header.php");?>
 <br><br>
 <a href="data.php"> Tagasi </a>
 	<h1>Muuda jooksu andmed:</h1>
