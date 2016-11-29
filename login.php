@@ -53,11 +53,11 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<h1>Logi sisse</h1>
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
-		<label>E-post</label> <br>
-		<input name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
+		<br>
+		<input name="loginEmail" placeholder="E-post" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
 		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
-		<input type="submit" value="Logi sisse">
-	
+		<input type="submit" value="Logi sisse"> <br><br>
+		<p>Ei ole kasutajat? <a href="create_user.php"><?="Vajuta siia";?></a></p>
 	</form>
 
 	
