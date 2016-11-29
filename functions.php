@@ -112,7 +112,7 @@ function cleanInput($input) {
 }
 
 	
-function run($userName, $o_course, $distance, $duration, $maxSpeed, $avgSpeed){
+/*function run($userName, $o_course, $distance, $duration, $maxSpeed, $avgSpeed){
 	//echo $serverUsername;
 	//Ühendus
 	$database = "if16_mattbleh_2";
@@ -272,5 +272,7 @@ return $result;
  		$mysqli->close();
  		
  	}
+	
+*/
  	
 ?>

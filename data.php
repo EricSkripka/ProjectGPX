@@ -206,7 +206,7 @@ if(isset($_GET["searching"])){
 		$html .= "<td>".$m->maxSpeed."</td>";
 		$html .= "<td>".$m->avgSpeed."</td>";
 		$html .= "<td>".$m->date."</td>";
-		$html .= "<td><a href='edit.php?id=".$m->id."'>edit.php</a></td>";
+		$html .= "<td><a href='edit.php?id=".$m->id."' class='btn btn=default' ><span class='glyphicon glyphicon-pencil'</span></a></td>";
 	$html .="</tr>";
 	
 	}

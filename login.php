@@ -34,7 +34,7 @@ if(isset($_POST["signupEmail"])){
 		$signupEmailError = "See väli on kohustuslik";	
 	} else {
 		//email on olemas
-		$_POST["signupEmail"] = cleanInput($_POST["signupEmail"]);
+		$_POST["signupEmail"] = $Helper->cleanInput($_POST["signupEmail"]);
 		$signupEmail = $_POST["signupEmail"];
 	}
 }
@@ -42,7 +42,7 @@ if(isset($_POST["signupUsername"])) {
 	if(empty($_POST["signupUsername"])){
 		$signupUsernameError = "Igal kasutajal peab olema kasutajanimi";
 	} else {
-		$_POST["signupUsername"] = cleanInput($_POST["signupUsername"]);
+		$_POST["signupUsername"] = $Helper->cleanInput($_POST["signupUsername"]);
 		$signupUsername = $_POST["signupUsername"];
 		}
 }
@@ -77,7 +77,7 @@ if(isset($_POST["signupFirstName"])) {
 	if(empty($_POST["signupFirstName"])){
 		$signupFirstNameError = "Eesnimi sisestamine on kohustuslik";
 	} else {
-		$_POST["signupFirstName"] = cleanInput($_POST["signupFirstName"]);
+		$_POST["signupFirstName"] = $Helper->cleanInput($_POST["signupFirstName"]);
 		$signupFirstName = $_POST["signupFirstName"];
 	}
 }
@@ -85,7 +85,7 @@ if(isset($_POST["signupLastName"])) {
 	if(empty($_POST["signupLastName"])){
 		$signupLastNameError = "Perekonnanimi sisestamine on kohustuslik";
 	} else {
-		$_POST["signupLastName"] = cleanInput($_POST["signupLastName"]);
+		$_POST["signupLastName"] = $Helper->cleanInput($_POST["signupLastName"]);
 		$signupLastName = $_POST["signupLastName"];
 	}
 }
@@ -108,21 +108,21 @@ if ( isset($_POST["signupEmail"]) &&
 {
 	$password = hash("sha512", $_POST["signupPassword"]);
 	
-signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
+$User->signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
 }
 $notice = "";
 if(isset($_POST["loginEmail"])){
 	//jah on olemas
 	//kas on tühi
 	if(!empty($_POST["loginEmail"])){
-		$_POST["loginEmail"] = cleanInput($_POST["loginEmail"]);
+		$_POST["loginEmail"] = $Helper->cleanInput($_POST["loginEmail"]);
 		
 if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) && 
 	!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"]))
 	{
 //ei pea olema sama nimi mis function.php-s. Seal on $error
 	
-	$notice = login($_POST["loginEmail"], $_POST["loginPassword"]);
+	$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
 	$loginEmail2 = $_POST["loginEmail"];
 	
 } else {
