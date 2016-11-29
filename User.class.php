@@ -35,7 +35,6 @@ class User {
 		}
 		//panen Ühenduse kinni
 		$stmt->close();
-		$mysqli->close();
 	}
 	
 	function login($loginEmail, $loginPassword) {
