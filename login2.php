@@ -29,7 +29,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 //ei pea olema sama nimi mis function.php-s. Seal on $error
 	
 	$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
-	$loginEmail2 = $_POST["loginEmail"];
+	//$loginEmail2 = $_POST["loginEmail"];
 	
 } else {
 	$loginEmailError = "Sisselogimiseks peab sisestama e-maili";
