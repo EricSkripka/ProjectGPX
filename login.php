@@ -38,6 +38,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	}
 }
 #SEE on TEST
+#SEE on KA test
 ?>
 
 <!DOCTYPE html>
