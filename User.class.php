@@ -12,13 +12,13 @@ class User {
 	function signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender) {
 	//echo $serverUsername;
 	//Ühendus
-	$database = "if16_mattbleh_2";
+	#$database = "if16_mattbleh_2";
 
-		$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		#$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 
 		// mysqli rida
-		$stmt = $mysqli->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
-		echo $mysqli->error;
+		$stmt = $this->connection->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
+		echo $this->connection->error;
 		// stringina üks täht iga muutuja kohta (?), mis t??t
 		// string - s
 		// integer - i
@@ -44,12 +44,12 @@ class User {
 	$password = $loginPassword;
 	$email = $loginEmail;
 	
-	$database = "if16_mattbleh_2";
-		$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+	#$database = "if16_mattbleh_2";
+		#$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 		
-		$stmt = $mysqli->prepare("SELECT id, username, password, email, firstname, lastname, gender FROM project_user WHERE email = ?");
+		$stmt = $this->connection->prepare("SELECT id, username, password, email, firstname, lastname, gender FROM project_user WHERE email = ?");
 		
-		echo $mysqli->error;
+		echo $this->connection->error;
 		
 		//asendan küsimärgi
 		$stmt->bind_param("s", $email);
@@ -81,24 +81,13 @@ class User {
 				$error = "Vale parool";
 			}
 			//määran sessiooni muutujad
-			
-			
 			//header("Location: login.php");
 			
 		} else {
 			//ei ole sellist kasutajat selle meiliga
 			$error = "Ei ole sellist e-maili";
 		}
-	
 		return $error;
 	}
-	
-	
-	
 }
-
-
-
-
-
 ?>

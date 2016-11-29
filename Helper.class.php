@@ -2,17 +2,6 @@
 
 class Helper {
 	
-	
-	private $connection;
-	
-	
-	function __construct($mysqli){
-		
-		$this->connection = $mysqli;
-		
-	}
-
-	
 	function cleanInput($input){
 		
 		$input = trim($input);
@@ -20,10 +9,6 @@ class Helper {
 		$input = htmlspecialchars($input);
 		
 		return $input;
-		
 	}
-	
 }
-
-
 ?>
