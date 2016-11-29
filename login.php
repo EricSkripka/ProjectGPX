@@ -13,6 +13,11 @@ if (isset($_SESSION["userId"])){
 	exit();
 }
 
+
+
+
+
+
 $loginEmail2 = "";
 $loginEmailError = "";
 $loginPasswordError = "";
@@ -46,9 +51,17 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 
 <!DOCTYPE html>
 <?php require("header.php");?>
+<div class="""img-responsive" style="background-image: url('http://loveforrunning.com/wp-content/uploads/2016/08/running.jpg';)>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+		
+		
 <html>
 <head>
 
+  
+	
 	<title>Logi sisse või loo kasutaja</title>
 </head>
 <body>
@@ -56,12 +69,29 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<h1>Logi sisse</h1>
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
+<<<<<<< HEAD
 		<label>E-post</label> <br>
-		<input name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
-		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
-		<input type="submit" value="Logi sisse">
+		<div class="form-group">
+		<input class="form-control" name="loginEmail" type="text"><?php echo $loginEmailError; ?>
+		</div>
+		<div class="form-group">
+		<input class="form-control" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
+		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
+		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse">
 	
+=======
+		<br>
+		<input name="loginEmail" placeholder="E-post" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
+		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
+		<input type="submit" value="Logi sisse"> <br><br>
+		<p>Ei ole kasutajat? <a href="create_user.php"><?="Vajuta siia";?></a></p>
+>>>>>>> bab7e31e39d7b992b021ce2455ae024886cfc9f7
 	</form>
+	
+		</div>
+</div>
+</div>
+</div>
 
 	
 </body>
