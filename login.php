@@ -48,6 +48,12 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 
 <!DOCTYPE html>
 <?php require("header.php");?>
+<div class="""img-responsive" style="background-image: url('http://loveforrunning.com/wp-content/uploads/2016/08/running.jpg';)>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+		
+		
 <html>
 <head>
 
@@ -61,11 +67,20 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
 		<label>E-post</label> <br>
-		<input name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
-		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
-		<input type="submit" value="Logi sisse">
+		<div class="form-group">
+		<input class="form-control" name="loginEmail" type="text"><?php echo $loginEmailError; ?>
+		</div>
+		<div class="form-group">
+		<input class="form-control" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
+		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
+		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse">
 	
 	</form>
+	
+		</div>
+</div>
+</div>
+</div>
 
 	
 </body>
