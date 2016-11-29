@@ -10,7 +10,7 @@ if (isset($_SESSION["userId"])){
 	exit();
 }
 
-
+$loginEmail2 = "";
 $loginEmailError = "";
 $loginPasswordError = "";
 //kas on üldse olemas selline muutuja
