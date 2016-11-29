@@ -4,6 +4,14 @@ require_once("../../config.php");
 //see vail peab olema kõigil lehtedel, kus tahan kasutada session muutujat
 
 session_start();
+require("User.class.php");
+require("Interest.class.php");
+require("Car.class.php");
+require("Helper.class.php");
+$User = new User($mysqli);
+$Interest = new Interest($mysqli);
+$Cars = new Cars($mysqli);
+$Helper = new Helper($mysqli);
 
 //************
 //***Signup***
