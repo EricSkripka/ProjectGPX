@@ -23,12 +23,12 @@ $signupLastName = "";
 $signupLastNameError = "";
 
 
-//kas on üldse olemas selline muutuja
+//kas on Ã¼ldse olemas selline muutuja
 if(isset($_POST["signupEmail"])){
 	//jah on olemas
-	//kas on tühi
+	//kas on tÃ¼hi
 	if(empty($_POST["signupEmail"])){
-		$signupEmailError = "See väli on kohustuslik";	
+		$signupEmailError = "See vÃ¤li on kohustuslik";	
 	} else {
 		//email on olemas
 		$_POST["signupEmail"] = cleanInput($_POST["signupEmail"]);
@@ -47,10 +47,10 @@ if(isset($_POST["signupPassword"])) {
 	if(empty($_POST["signupPassword"])){
 		$signupPasswordError = "Parool peab olema";
 	} else {
-		//Siia jõuan siis kui parool on olemas ja kui parool ei ole tühi
-		//kas parooli pikkus on väiksem kui kaheksa
+		//Siia jÃµuan siis kui parool on olemas ja kui parool ei ole tÃ¼hi
+		//kas parooli pikkus on vÃ¤iksem kui kaheksa
 			if (strlen($_POST["signupPassword"]) < 8) {
-			$signupPasswordError = "Parool peab olema vähemalt 8 tähemärki pikk";
+			$signupPasswordError = "Parool peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rki pikk";
 			}
 		}
 }
@@ -58,14 +58,14 @@ if(isset($_POST["signupPassword2"])) {
 	if(empty($_POST["signupPassword2"])){
 		$signupPasswordError2 = "Parool peab olema";
 	} else {
-		//Siia jõuan siis kui parool on olemas ja kui parool ei ole tühi
-		//kas parooli pikkus on väiksem kui kaheksa
+		//Siia jÃµuan siis kui parool on olemas ja kui parool ei ole tÃ¼hi
+		//kas parooli pikkus on vÃ¤iksem kui kaheksa
 		if (strlen($_POST["signupPassword2"]) < 8) {
-			$signupPasswordError2 = "Parool peab olema vähemalt 8 tähemärki pikk";
+			$signupPasswordError2 = "Parool peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rki pikk";
 		}else {
-			//Kontrollin, kas paroolid ühtivad
+			//Kontrollin, kas paroolid Ã¼htivad
 			if ($_POST["signupPassword2"] != $_POST["signupPassword"]){
-			$signupPasswordError2 = "Paroolid ei ühti";
+			$signupPasswordError2 = "Paroolid ei Ã¼hti";
 					} 
 			}
 		}
@@ -94,7 +94,7 @@ if( isset( $_POST["signupGender"] ) ){
 
 
 
-//peab olema email ja parool ja ühtegi errorit 
+//peab olema email ja parool ja Ã¼htegi errorit 
 
 if ( isset($_POST["signupEmail"]) && 
 	 isset($_POST["signupPassword"]) &&
@@ -110,7 +110,7 @@ signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastNa
 $notice = "";
 if(isset($_POST["loginEmail"])){
 	//jah on olemas
-	//kas on tühi
+	//kas on tÃ¼hi
 	if(!empty($_POST["loginEmail"])){
 		$_POST["loginEmail"] = cleanInput($_POST["loginEmail"]);
 		
@@ -147,21 +147,21 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		
 		<?php if($signupGender == "male") { ?>
 			<input name="signupGender" value="male" type="radio" checked> Mees <br>
-		<?php }else { ?> <!--Tühikud peavad olema-->
+		<?php }else { ?> <!--TÃ¼hikud peavad olema-->
 			<input name="signupGender" value="male" type="radio"> Mees <br>
 		<?php } ?>	
 		
 		
 		<?php if($signupGender == "female") { ?>
 			<input name="signupGender" value="female" type="radio" checked> Naine <br>
-		<?php }else { ?> <!--Tühikud peavad olema-->
+		<?php }else { ?> <!--TÃ¼hikud peavad olema-->
 			<input name="signupGender" value="female" type="radio"> Naine <br>
 		<?php } ?>
 		
 		
 		<?php if($signupGender == "other") { ?>
 			<input name="signupGender" value="other" type="radio" checked> Ei soovi avaldada <br><br>
-		<?php }else { ?> <!--Tühikud peavad olema-->
+		<?php }else { ?> <!--TÃ¼hikud peavad olema-->
 			<input name="signupGender" value="other" type="radio"> Ei soovi avaldada <br><br>
 		<?php } ?>
 			

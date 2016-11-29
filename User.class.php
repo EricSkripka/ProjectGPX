@@ -11,29 +11,29 @@ class User {
 	}
 	function signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender) {
 	//echo $serverUsername;
-	//Ühendus
-	$database = "if16_mattbleh_2";
+	//Ãœhendus
+	#$database = "if16_mattbleh_2";
 
-		$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+		#$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 
 		// mysqli rida
-		$stmt = $mysqli->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
-		echo $mysqli->error;
-		// stringina üks täht iga muutuja kohta (?), mis t??t
+		$stmt = $this->connection->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
+		echo $this->connection->error;
+		// stringina Ã¼ks tÃ¤ht iga muutuja kohta (?), mis t??t
 		// string - s
 		// integer - i
 		// float (double) - d
-		// küsimärgid asendada muutujaga
+		// kÃ¼simÃ¤rgid asendada muutujaga
 		$stmt->bind_param("ssssss",$signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
 		
-		//täida käu
+		//tÃ¤ida kÃ¤u
 		if($stmt->execute()) {
-			echo "Salvestamine õnnestus";
+			echo "Salvestamine Ãµnnestus";
 			
 		} else {
 		 	echo "ERROR ".$stmt->error;
 		}
-		//panen Ühenduse kinni
+		//panen Ãœhenduse kinni
 		$stmt->close();
 		$mysqli->close();
 	}
@@ -44,22 +44,22 @@ class User {
 	$password = $loginPassword;
 	$email = $loginEmail;
 	
-	$database = "if16_mattbleh_2";
-		$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
+	#$database = "if16_mattbleh_2";
+		#$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
 		
-		$stmt = $mysqli->prepare("SELECT id, username, password, email, firstname, lastname, gender FROM project_user WHERE email = ?");
+		$stmt = $this->connection->prepare("SELECT id, username, password, email, firstname, lastname, gender FROM project_user WHERE email = ?");
 		
-		echo $mysqli->error;
+		echo $this->connection->error;
 		
-		//asendan küsimärgi
+		//asendan kÃ¼simÃ¤rgi
 		$stmt->bind_param("s", $email);
 		
-		//määrna väärtused muutujasse
+		//mÃ¤Ã¤rna vÃ¤Ã¤rtused muutujasse
 		$stmt->bind_result($id, $usernameFromDB, $passwordFromDB,  $emailFromDB, $firstnameFromDB, $lastnameFromDB, $genderFromDB);
 		$stmt->execute();
 		
-		//andmed tulid andmebaasist või mitte
-		//on tõene kui on vähemalt üks vastus
+		//andmed tulid andmebaasist vÃµi mitte
+		//on tÃµene kui on vÃ¤hemalt Ã¼ks vastus
 		
 		if($stmt->fetch()){
 			//oli sellise meiliga kasutaja
@@ -80,25 +80,14 @@ class User {
 			} else {
 				$error = "Vale parool";
 			}
-			//määran sessiooni muutujad
-			
-			
+			//mÃ¤Ã¤ran sessiooni muutujad
 			//header("Location: login.php");
 			
 		} else {
 			//ei ole sellist kasutajat selle meiliga
 			$error = "Ei ole sellist e-maili";
 		}
-	
 		return $error;
 	}
-	
-	
-	
 }
-
-
-
-
-
 ?>

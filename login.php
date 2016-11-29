@@ -1,14 +1,18 @@
 <?php
 
-require("../../config.php");
-require("functions.php");
+#require("../../config.php");
 
+require("functions.php");
+require("User.class.php");
+
+$User = new User($mysqli);
 
 if (isset($_SESSION["userId"])){
 	//suunan sisselogimise lehele
 	header("Location: data.php");
 	exit();
 }
+##TEST
 
 
 
