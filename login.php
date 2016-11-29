@@ -10,13 +10,20 @@ if (isset($_SESSION["userId"])){
 	exit();
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a729f0cf564947efd13a5622ef65f78e6799bd66
 $loginEmail2 = "";
 $loginEmailError = "";
 $loginPasswordError = "";
 //kas on üldse olemas selline muutuja
+<<<<<<< HEAD
+=======
+
+>>>>>>> a729f0cf564947efd13a5622ef65f78e6799bd66
 
 $notice = "";
 if(isset($_POST["loginEmail"])){
@@ -39,7 +46,8 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 }
 	}
 }
-
+#SEE on TEST
+#SEE on KA test
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +70,11 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<input type="submit" value="Logi sisse">
 	
 	</form>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> a729f0cf564947efd13a5622ef65f78e6799bd66
 	
 </body>
 </html>
