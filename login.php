@@ -10,6 +10,11 @@ if (isset($_SESSION["userId"])){
 	exit();
 }
 
+
+
+
+
+
 $loginEmail2 = "";
 $loginEmailError = "";
 $loginPasswordError = "";
@@ -46,6 +51,8 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 <html>
 <head>
 
+  
+	
 	<title>Logi sisse või loo kasutaja</title>
 </head>
 <body>
