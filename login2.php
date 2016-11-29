@@ -13,13 +13,13 @@ if (isset($_SESSION["userId"])){
 
 $loginEmailError = "";
 $loginPasswordError = "";
-//kas on √ºldse olemas selline muutuja
+//kas on ¸ldse olemas selline muutuja
 
 
 $notice = "";
 if(isset($_POST["loginEmail"])){
 	//jah on olemas
-	//kas on t√ºhi
+	//kas on t¸hi
 	if(!empty($_POST["loginEmail"])){
 		$_POST["loginEmail"] = $Helper->cleanInput($_POST["loginEmail"]);
 		
@@ -37,7 +37,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 }
 	}
 }
-#SEE on TEST
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 <html>
 <head>
 
-	<title>Logi sisse v√µi loo kasutaja</title>
+	<title>Logi sisse vıi loo kasutaja</title>
 </head>
 <body>
 
