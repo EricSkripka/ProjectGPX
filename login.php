@@ -12,6 +12,7 @@ if (isset($_SESSION["userId"])){
 	header("Location: data.php");
 	exit();
 }
+##TEST
 
 
 
