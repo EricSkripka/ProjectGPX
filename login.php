@@ -60,8 +60,6 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		
 <html>
 <head>
-
-  
 	
 	<title>Logi sisse või loo kasutaja</title>
 </head>
@@ -72,7 +70,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
 		<div class="form-group">
-		<input class="form-control" placeholder="E-post" name="loginEmail" type="text"><?php echo $loginEmailError; ?>
+		<input class="form-control" placeholder="E-post" name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?>
 		</div>
 		<div class="form-group">
 		<input class="form-control" name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br>
