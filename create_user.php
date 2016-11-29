@@ -132,6 +132,10 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 ?>
 
 <!DOCTYPE html>
+<?php require("header.php");?>
+<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
 <html>
 <head>
 
@@ -166,9 +170,14 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<?php } ?>
 			
 			
-		<input type="submit" value="Loo kasutaja">
+		
+		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Loo kasutaja">
+		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja">
 	
 	</form>
-	
+		</div>
+</div>
+</div>
+</div>
 </body>
 </html>
