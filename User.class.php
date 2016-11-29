@@ -11,7 +11,7 @@ class User {
 	}
 	function signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender) {
 	//echo $serverUsername;
-	//‹hendus
+	//√úhendus
 	$database = "if16_mattbleh_2";
 
 		$mysqli = new mysqli ($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $database);
@@ -19,21 +19,21 @@ class User {
 		// mysqli rida
 		$stmt = $mysqli->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
 		echo $mysqli->error;
-		// stringina ¸ks t‰ht iga muutuja kohta (?), mis t??t
+		// stringina √ºks t√§ht iga muutuja kohta (?), mis t??t
 		// string - s
 		// integer - i
 		// float (double) - d
-		// k¸sim‰rgid asendada muutujaga
+		// k√ºsim√§rgid asendada muutujaga
 		$stmt->bind_param("ssssss",$signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
 		
-		//t‰ida k‰u
+		//t√§ida k√§u
 		if($stmt->execute()) {
-			echo "Salvestamine ınnestus";
+			echo "Salvestamine √µnnestus";
 			
 		} else {
 		 	echo "ERROR ".$stmt->error;
 		}
-		//panen ‹henduse kinni
+		//panen √úhenduse kinni
 		$stmt->close();
 		$mysqli->close();
 	}
@@ -51,15 +51,15 @@ class User {
 		
 		echo $mysqli->error;
 		
-		//asendan k¸sim‰rgi
+		//asendan k√ºsim√§rgi
 		$stmt->bind_param("s", $email);
 		
-		//m‰‰rna v‰‰rtused muutujasse
+		//m√§√§rna v√§√§rtused muutujasse
 		$stmt->bind_result($id, $usernameFromDB, $passwordFromDB,  $emailFromDB, $firstnameFromDB, $lastnameFromDB, $genderFromDB);
 		$stmt->execute();
 		
-		//andmed tulid andmebaasist vıi mitte
-		//on tıene kui on v‰hemalt ¸ks vastus
+		//andmed tulid andmebaasist v√µi mitte
+		//on t√µene kui on v√§hemalt √ºks vastus
 		
 		if($stmt->fetch()){
 			//oli sellise meiliga kasutaja
@@ -80,7 +80,7 @@ class User {
 			} else {
 				$error = "Vale parool";
 			}
-			//m‰‰ran sessiooni muutujad
+			//m√§√§ran sessiooni muutujad
 			
 			
 			//header("Location: login.php");
