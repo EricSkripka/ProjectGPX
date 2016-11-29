@@ -48,7 +48,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 
 <!DOCTYPE html>
 <?php require("header.php");?>
-<div class="""img-responsive" style="background-image: url('http://loveforrunning.com/wp-content/uploads/2016/08/running.jpg';)>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-4">
@@ -66,7 +66,6 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<h1>Logi sisse</h1>
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
-<<<<<<< HEAD
 		<label>E-post</label> <br>
 		<div class="form-group">
 		<input class="form-control" name="loginEmail" type="text"><?php echo $loginEmailError; ?>
@@ -75,14 +74,10 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<input class="form-control" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
 		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse">
+		
+		
+	<h2>Loo Kasutaja</h2><br><a href="create_user.php" class="btn btn-success btn-sm hidden-xs" role="button">Vajuta Siia</a><br><br></a></a>
 	
-=======
-		<br>
-		<input name="loginEmail" placeholder="E-post" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
-		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
-		<input type="submit" value="Logi sisse"> <br><br>
-		<p>Ei ole kasutajat? <a href="create_user.php"><?="Vajuta siia";?></a></p>
->>>>>>> bab7e31e39d7b992b021ce2455ae024886cfc9f7
 	</form>
 	
 		</div>
