@@ -66,6 +66,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 	<h1>Logi sisse</h1>
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
+<<<<<<< HEAD
 		<label>E-post</label> <br>
 		<div class="form-group">
 		<input class="form-control" name="loginEmail" type="text"><?php echo $loginEmailError; ?>
@@ -75,6 +76,13 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
 		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse">
 	
+=======
+		<br>
+		<input name="loginEmail" placeholder="E-post" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?> <br><br>
+		<input name="loginPassword" placeholder="Parool" type="password"> <?php echo $loginPasswordError; ?> <br><br>
+		<input type="submit" value="Logi sisse"> <br><br>
+		<p>Ei ole kasutajat? <a href="create_user.php"><?="Vajuta siia";?></a></p>
+>>>>>>> bab7e31e39d7b992b021ce2455ae024886cfc9f7
 	</form>
 	
 		</div>
