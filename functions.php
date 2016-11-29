@@ -2,16 +2,16 @@
 
 require_once("../../config.php");
 //see vail peab olema kõigil lehtedel, kus tahan kasutada session muutujat
-
+$database = "if16_mattbleh_2";
 session_start();
+$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 require("User.class.php");
-require("Interest.class.php");
-require("Car.class.php");
 require("Helper.class.php");
 $User = new User($mysqli);
-$Interest = new Interest($mysqli);
-$Cars = new Cars($mysqli);
 $Helper = new Helper($mysqli);
+$database = "if16_mattbleh_2";
+
+
 
 //************
 //***Signup***
@@ -120,7 +120,7 @@ function cleanInput($input) {
 }
 
 	
-/*function run($userName, $o_course, $distance, $duration, $maxSpeed, $avgSpeed){
+function run($userName, $o_course, $distance, $duration, $maxSpeed, $avgSpeed){
 	//echo $serverUsername;
 	//Ühendus
 	$database = "if16_mattbleh_2";
@@ -281,6 +281,6 @@ return $result;
  		
  	}
 	
-*/
+
  	
 ?>
