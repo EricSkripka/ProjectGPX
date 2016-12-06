@@ -46,19 +46,18 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 </head>
 <body>
 
-	<h1>Logi sisse</h1>
+	<h1>Logi sisse</h1><br>
 	<form method="POST">
 		<p style="color:red;"><?=$notice;?></p>
-		<label>E-post</label> <br>
 		<div class="form-group">
-		<input class="form-control" name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?>
+		<input class="form-control" placeholder="E-mail" name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?>
 		</div>
 		<div class="form-group">
-		<input class="form-control" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
+		<input class="form-control" placeholder="Parool" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
-		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse">
+		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse"><br><br>
 		
-	<h2>Loo Kasutaja</h2><br><a href="create_user.php" class="btn btn-success btn-sm hidden-xs" role="button">Vajuta Siia</a><br><br></a></a>
+	<p>Pole kasutajat? <a href="create_user.php"> Vajuta Siia</a></p>
 	
 	</form
 		</div>
