@@ -46,18 +46,18 @@ $msg = "";
 	
     $interests = $Interest->get();
     $userInterests = $Interest->getUser();
+
+	/*E-mail: <?=$_SESSION["userEmail"];?>
+	Sugu: <?=$_SESSION["gender"];?>*/
 ?>
 
 <h1><a href="data.php"> < tagasi</a> Kasutaja leht</h1>
 
-<h3>See leht on lihtsalt katsetamiseks</h3>
 
 
 <?=$msg;?>
-<p>
-	Tere tulemast <?=$_SESSION["userEmail"];?>!
-	<!--<a href="?logout=1">Logi välja</a>-->
-</p>
+<p>Kasutajanimi: <?=$_SESSION["userName"];?></p>
+
 
 
 <h2>Salvesta hobi</h2>
