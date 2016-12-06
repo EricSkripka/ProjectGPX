@@ -49,6 +49,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
             echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
             
             // save file name to DB here
+			//Üleslaadimisel märgitakse ära, kes üles laadis (salvestatakse kasutajanimega või id-ga failinimese). Selleks tuleb kasutada ülevalolevat basename( $_FILES["fileToUpload"]["name"])
             
         } else {
             echo "Sorry, there was an error uploading your file.";

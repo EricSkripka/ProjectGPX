@@ -19,7 +19,7 @@ class User {
 		// mysqli rida
 		$stmt = $this->connection->prepare("INSERT INTO project_user (username, password, email, firstname, lastname, gender) VALUES (?, ?, ?, ?, ?, ?)");
 		echo $this->connection->error;
-		// stringina üks täht iga muutuja kohta (?), mis t??t
+		// stringina üks täht iga muutuja kohta (?)
 		// string - s
 		// integer - i
 		// float (double) - d

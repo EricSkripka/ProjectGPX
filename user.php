@@ -56,8 +56,7 @@ $msg = "";
 
 
 <?=$msg;?>
-<p>Kasutajanimi: <?=$_SESSION["userName"];?></p>
-
+<p>Kasutajanimi: <a href="change.php"><?=$_SESSION["userName"];?></a></p>
 
 
 <h2>Salvesta hobi</h2>

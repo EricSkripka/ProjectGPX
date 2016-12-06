@@ -57,7 +57,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
 		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse"><br><br>
 		
-	<p>Pole kasutajat? <a href="create_user.php"> Vajuta Siia</a></p>
+	<p>Pole kasutajat? <a href="create.php"> Vajuta Siia</a></p>
 	
 	</form
 		</div>
