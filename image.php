@@ -1,43 +1,34 @@
 <?php
-
-require("../../config.php");
-require("functions.php");
-
-//$searching = "r";
-//kui ei ole kasutaja id'd
-if (!isset($_SESSION["userId"])){
-	//suunan sisselogimise lehele
-	header("Location: login.php");	
-	exit();
-}
-
-//kui on ?logout aadressireal siis login välja
-if (isset($_GET["logout"])) {
-	session_destroy();
-	header("Location: login.php");
-	exit();
-}
-
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
-    $GPXFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-    // Check if gpx file is a actual gpx file
-
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+    }
     // Check if file already exists
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
         $uploadOk = 0;
     }
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if($GPXFileType != "gpx") {
-        echo "Sorry, only GPX files are allowed.";
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
@@ -57,24 +48,16 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 }else{
     echo "Please select the file that you want to upload!";
 }
-
 ?>
 
-<h1>DATA<h1><?php require("header.php");?>
-	
-<p>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</p>
-<p>Kasutajanimi: <a href="user.php"><?=$_SESSION["userName"];?></a></p>
-<p>E-mail: <?=$_SESSION["userEmail"];?></p>
-<p>Sugu: <?=$_SESSION["gender"];?></p>
-<a href="?logout=1">Logi välja</a>  <br> <br>
 <!DOCTYPE html>
 <html>
 <body>
 
-<form action="data.php" method="post" enctype="multipart/form-data">
+<form action="image.php" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload gpx" name="submit">
+    <input type="submit" value="Upload Image" name="submit">
 </form>
 
 </body>
