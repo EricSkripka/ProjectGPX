@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class Helper {
 	
@@ -9,6 +9,8 @@ class Helper {
 		$input = htmlspecialchars($input);
 		
 		return $input;
+		
 	}
+	
 }
 ?>
