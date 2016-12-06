@@ -55,7 +55,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         }
     }
 }else{
-    echo "Please select the file that you want to upload!";
+    #echo "Please select the file that you want to upload!";
 }
 
 ?>
@@ -72,8 +72,8 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 <body>
 
 <form action="data.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
+    Valige .GPX fail, mida soovite üles laadia:
+    <input type="file" name="fileToUpload" id="fileToUpload"> <br>
     <input type="submit" value="Upload gpx" name="submit">
 </form>
 
