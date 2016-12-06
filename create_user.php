@@ -154,7 +154,7 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Loo kasutaja">
 		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja">
 		
-		<a href="login.php">tagasi</a>
+		<a href="login.php">Tagasi</a>
 	
 	</form>
 		</div>
