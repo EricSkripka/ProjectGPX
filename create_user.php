@@ -152,9 +152,9 @@ if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) &&
 		<?php } ?>
 			
 		<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Loo kasutaja">
-		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja">
+		<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja"><br><br>
 		
-		<a href="login.php">Tagasi</a>
+		<p>On siiski kasjutaja olemas?<a href="login.php"> Vajuta Siia</a></p>
 	
 	</form>
 		</div>
