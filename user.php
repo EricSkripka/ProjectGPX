@@ -51,7 +51,7 @@ $msg = "";
 	Sugu: <?=$_SESSION["gender"];?>*/
 ?>
 
-<h1><a href="data.php"> < tagasi</a> Kasutaja leht</h1>
+<h1><a href="data.php">Tagasi</a> Kasutaja leht</h1>
 
 
 
