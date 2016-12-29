@@ -1,7 +1,7 @@
 <?php
 
 $url = "../20161114_153234.gpx";
-
+$dir = "uploads";
 
 require("../../config.php");
 require("functions.php");
@@ -64,6 +64,21 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 }else{
     #echo "Please select the file that you want to upload!";
 }
+
+
+
+
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($file = readdir($dh)) !== false){
+		if ($file != "." && $file != ".."){
+			echo "GPX fail: " . $file . "<br>";
+		}
+    }
+    closedir($dh);
+  }
+}
+
 
 ?>
 
