@@ -1,7 +1,10 @@
 <?php
 
-$url = "../20161114_153234.gpx";
+$asukoht = "../ProjectGPX/uploads";
+$kaart = "../ProjectGPX/uploads/matu--20161114_153234.gpx";
+#$kaart = "";
 $dir = "uploads";
+$array = array();
 
 require("../../config.php");
 require("functions.php");
@@ -21,10 +24,11 @@ if (isset($_GET["logout"])) {
 	exit();
 }
 
+
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
-	$target_username  = $_SESSION["userName"] . basename($_FILES["fileToUpload"]["name"]);
+	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
 	$target_dir = "uploads/";
-    $target_file = $target_dir . $_SESSION["userName"] . basename($_FILES["fileToUpload"]["name"]);
+    $target_file = $target_dir . $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $GPXFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     // Check if gpx file is a actual gpx file
@@ -66,18 +70,26 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 }
 
 
+#see teeb põhimõteliselt sama asja aga sellega tekkisid probleemid masiivi panemisega aga muidu prindib välja
 
+#$file = scandir($dir);
+#if ($file != "." && $file != "..") {
+#	array_push($array, $file);
+#}
 
+# käib läbi uploads kataloogi ja lisab kõik olemasolevad mitte peidetud failid masiivi
 if (is_dir($dir)){
   if ($dh = opendir($dir)){
     while (($file = readdir($dh)) !== false){
 		if ($file != "." && $file != ".."){
-			echo "GPX fail: " . $file . "<br>";
+			array_push($array, $file);
+			#echo "GPX fail: " . $file . "<br>";
 		}
     }
     closedir($dh);
   }
 }
+#print_r($array);
 
 
 ?>
@@ -99,13 +111,39 @@ if (is_dir($dir)){
 </form>
 
 </body>
-</html>
 
-<html>
-  <head>
+<br>
+
+<?php
+
+#tegin tabeli, kus prinditakse välja kõik masiivis olevad failid
+
+$html = "<table>";
+
+echo "GPX failid";
+#$html .= "<tr>";
+#	$html .= "<th>"'GPX'"</th>";
+#$html .= "</tr>";
+
+foreach($array as $c){
+	$html .= "<tr>";
+		$html .= "<td>".$c."</td>";
+		$html .= "<td><a href=../ProjectGPX/data.php?$kaart=".$c."'>Vajuta</a></td>";
+	$html .= "</tr>";
+}
+#<a href='$kaart?$file='".$c."'>Vajuta</a>
+$html .= "</table>";
+echo $html;
+
+echo $kaart;
+
+?>
+<br><br>
+<table>
+<head>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <title>KML Layers</title>
+    <title>Google Maps</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -141,7 +179,7 @@ if (is_dir($dir)){
 		
 		 $.ajax({
 		  type: "GET",
-		  url: "<?=$url;?>",
+		  url: "<?=$kaart;?>",
 		  dataType: "xml",
 		  success: function(xml) {
 			var points = [];
@@ -175,4 +213,6 @@ if (is_dir($dir)){
 	 
 	  
     </script>
+	<table>
+
 </html>
