@@ -5,6 +5,7 @@ $asukoht = "../ProjectGPX/uploads";
 $kaart = "";
 $dir = "uploads";
 $array = array();
+$vastus = "";
 
 require("../../config.php");
 require("functions.php");
@@ -35,38 +36,38 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 
     // Check if file already exists
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
+        $vastus = "Selle nimega fail juba eksisteerib.";
         $uploadOk = 0;
     }
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
+        $vastus = "See fail on liiga suur.";
         $uploadOk = 0;
     }
     // Allow certain file formats
     if($GPXFileType != "gpx") {
-        echo "Sorry, only GPX files are allowed.";
+        $vastus = "Ainult .gpx failid on lubatud.";
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+       $vastus = "Seda faili ei laetud üles.";
     // if everything is ok, try to upload file
     } else {
         
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file ". $target_username. " has been uploaded.";
+			$vastus = "See fail ". $target_username. " laeti üles.";
 			
             
             // save file name to DB here
 			//Üleslaadimisel märgitakse ära, kes üles laadis (salvestatakse kasutajanimega või id-ga failinimese).
             
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            $vastus = "Vabandust, faili laadimisega tekkis probleem.";
         }
     }
 }else{
-    #echo "Please select the file that you want to upload!";
+    #$vastus = "Please select the file that you want to upload!";
 }
 
 
@@ -108,9 +109,11 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     <input type="submit" value="Upload gpx" name="submit">
 </form>
 
+<?php echo $vastus ?>
+
 </body>
 
-<br>
+<br><br>
 
 <p>Olemasolevad GPX failid:</p>
 
