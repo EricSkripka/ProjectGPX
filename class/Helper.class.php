@@ -9,8 +9,6 @@ class Helper {
 		$input = htmlspecialchars($input);
 		
 		return $input;
-		
 	}
-	
 }
 ?>

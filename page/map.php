@@ -1,20 +1,11 @@
-
-
 <?php  
-#session_start();
-
-$fail = $_GET['kaart'];
+#võtan url-i realt muutuja
+$fail = $_GET['map'];
 echo $fail;
-
-#$kk = $_SESSION['kaart'];
-#print_r( $_SESSION['kaart']);
-
-#print_r ($kk['kaart']);
 
 $url = "../uploads/$fail";
 #$url = "../uploads/patu--20161114_153234.gpx";
 ?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -84,10 +75,6 @@ $url = "../uploads/$fail";
 		  }
 		});
 		
-      }
-	  
-	  
-	 
-	  
+      }  
     </script>
 </html>

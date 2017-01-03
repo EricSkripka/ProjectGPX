@@ -5,16 +5,13 @@ require("../functions.php");
 
 #defineerib muutujad
 $asukoht = "../ProjectGPX/uploads";
-#$kaart = "../ProjectGPX/uploads/matu--20161114_153234.gpx";
-$kaart = "";
+$map = "";
 $dir = "../uploads";
 $array = array();
 $answer = "";
 $answer2 = "";
 $answer3 = "";
 $answer4 = "";
-
-//$searching = "r";
 
 #kui ei ole sisse logitud siis suunab login.php lehele
 if (!isset($_SESSION["userId"])){
@@ -125,7 +122,7 @@ if (is_dir($dir)){
 			#array_push($array, $file);
 			echo $file;
 ?>	
-			<a href="../page/map.php?kaart=<?php echo $file ?>">Kaart</a><br>
+			<a href="../page/map.php?map=<?php echo $file ?>">map</a><br>
 <?php
 		}
     }
