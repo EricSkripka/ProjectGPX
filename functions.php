@@ -1,6 +1,6 @@
 <?php
 
-require("../../config.php");
+require("../../../config.php");
 //see vail peab olema kõigil lehtedel, kus tahan kasutada session muutujat
 
     if(!isset($_SESSION)) 
@@ -11,7 +11,7 @@ require("../../config.php");
 $database = "if16_mattbleh_2";
 $mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
 
-require("Helper.class.php");
+require("../class/Helper.class.php");
 $Helper = new Helper();
 
 ?>
