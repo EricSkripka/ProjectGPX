@@ -140,7 +140,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	<!-- top navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
        <div class="container">
-	   <a class="navbar-brand navbar-right" href="?logout=1">Logi välja</a>
+	   <a class="navbar-brand navbar-right" href="?logout=1">Logi vÃ¤lja</a>
     	<div class="navbar-header">
            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
              <span class="icon-bar"></span>
@@ -170,7 +170,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
           <form action="data.php" method="post" enctype="multipart/form-data">
-				<p>Valige .GPX fail, mida soovite üles laadida:<p>
+				<p>Valige .GPX fail, mida soovite Ã¼les laadida:<p>
 				<input type="file" name="fileToUpload" id="fileToUpload"> <br>
 				<input type="submit" value="Upload gpx" name="submit">
 			</form>
