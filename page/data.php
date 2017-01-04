@@ -30,7 +30,7 @@ if (isset($_GET["logout"])) {
 #kontrollid, mis kontrollivad üleslaetavat faili
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
-	$target_dir = "uploads/";
+	$target_dir = "../uploads/";
     $target_file = $target_dir . $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $GPXFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -122,7 +122,7 @@ if (is_dir($dir)){
 			#array_push($array, $file);
 			echo $file;
 ?>	
-			<a href="../page/map.php?map=<?php echo $file ?>">map</a><br>
+			<a href="../page/map.php?map=<?php echo $file ?>">Kaart</a><br>
 <?php
 		}
     }
