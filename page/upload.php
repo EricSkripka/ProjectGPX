@@ -18,14 +18,14 @@ if (!isset($_SESSION["userId"])){
 	exit();
 }
 
-#kui on ?logout aadressireal siis login välja
+#kui on ?logout aadressireal siis login v?a
 if (isset($_GET["logout"])) {
 	session_destroy();
 	header("Location: login.php");
 	exit();
 }
 
-#kontrollid, mis kontrollivad üleslaetavat faili
+#kontrollid, mis kontrollivad ??laetavat faili
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
 	$target_dir = "../uploads/";
@@ -48,31 +48,24 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         $error = "Ainult .gpx failid on lubatud. ";
         $uploadOk = 0;
     }
-	#Kui on tekkinud error, siis kuvatakse järgnev veateade
+	#Kui on tekkinud error, siis kuvatakse j?nev veateade
     if ($uploadOk == 0) {
-       $error2 = "Seda faili ei laetud üles.";
-	#Kui oli kõik korras siis laetakse fail üles
+       $error2 = "Seda faili ei laetud ??.";
+	#Kui oli k??korras siis laetakse fail ??
     } else {
-		#Kui fail laetakse üles siis antakse ka teade, et see juhtus aga kui ei laetud siis antakse veateade
+		#Kui fail laetakse ?? siis antakse ka teade, et see juhtus aga kui ei laetud siis antakse veateade
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$error3 = "Fail ". $target_username. " laeti üles. ";
+			$error3 = "Fail ". $target_username. " laeti ??. ";
 			
         } else {
             $error3 = "Vabandust, faili laadimisega tekkis probleem. ";
         }
     }
-#Kui ei ole faili valitud ja vajutatakse üleslaadimis nuppu, antakse veateade
+#Kui ei ole faili valitud ja vajutatakse ??laadimis nuppu, antakse veateade
 } else {
-	$error4 = "Valige fail, mida üles laadida. ";
+	$error4 = "Valige fail, mida �les laadida. ";
 }
-
 ?>
-<h1><h1><?php require("../header.php");?>
-	
-<p>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</p>
-<p>Kasutajanimi: <a href="user.php"><?=$_SESSION["userName"];?></a></p>
-
-<a href="?logout=1">Logi välja</a>  <br> <br>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -147,7 +140,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	<!-- top navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
        <div class="container">
-	   <a class="navbar-brand navbar-right" href="?logout=1">Logi välja</a>
+	   <a class="navbar-brand navbar-right" href="?logout=1">Logi v�lja</a>
     	<div class="navbar-header">
            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
              <span class="icon-bar"></span>
@@ -166,9 +159,9 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <!-- sidebar -->
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
-              <li class="active"><a href="data.php">Home</a></li>
+              <li><a href="data.php">Home</a></li>
               <li><a href="user.php">User</a></li>
-              <li><a href="upload.php">Upload</a></li>
+              <li class="active"><a href="upload.php">Upload</a></li>
               <li><a href="#">Link 3</a></li>              
             </ul>
         </div>
@@ -176,30 +169,17 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <!-- main area -->
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
-          
-			
+          <form action="data.php" method="post" enctype="multipart/form-data">
+				<p>Valige .GPX fail, mida soovite �les laadida:<p>
+				<input type="file" name="fileToUpload" id="fileToUpload"> <br>
+				<input type="submit" value="Upload gpx" name="submit">
+			</form>
+
+			<!--Kuvab erinevad veateated-->
+			<?php echo $error, $error2, $error3, $error4 ?>
     
-          <p>Project Gpx home page siia peaks veel teksti tulema v mdea mingi äge asi</p>
-		  
-		  <!--Kuvab juba üles laetud failid-->
-			<h3>Olemasolevad GPX failid:</h3>
-
-			<?php
-
-			#Vaatab läbi "uploads" kausta ja sorteerib need kohe tähestiku järjekorda ja kuvab ekraanile, koos lingiga, millele vajutades näeb kaarti
-			#Lisaks ei prindi välja kahte peidetud kausta
-			$files = scandir($dir);
-			sort($files);
-			foreach ($files as $file) {
-				if ($file != '.' && $file != '..') {
-					echo  $file;
-			?>
-					<a href="../page/map.php?map=<?php echo $file ?>">Kaart</a><br>
-			<?php	
-				}
-			}
-			?>	
-
+			
+		
     
           
           
@@ -207,4 +187,5 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     </div><!--/.row-->
   </div><!--/.container-->
 </div><!--/.page-container-->
+
 </html>
