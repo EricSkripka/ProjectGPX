@@ -63,7 +63,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     }
 #Kui ei ole faili valitud ja vajutatakse ??laadimis nuppu, antakse veateade
 } else {
-	$error4 = "Valige fail, mida üles laadida. ";
+	$error4 = "Valige fail, mida Ã¼les laadida. ";
 }
 ?>
 <!DOCTYPE html>
