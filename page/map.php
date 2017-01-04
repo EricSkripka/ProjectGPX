@@ -1,6 +1,7 @@
 <?php  
 #võtan url-i realt muutuja
 $fail = $_GET['map'];
+#Kuvan ka üleval selle faili nime
 echo $fail;
 
 $url = "../uploads/$fail";
