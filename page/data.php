@@ -67,12 +67,6 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 }
 
 ?>
-<h1><h1><?php require("../header.php");?>
-	
-<p>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</p>
-<p>Kasutajanimi: <a href="user.php"><?=$_SESSION["userName"];?></a></p>
-
-<a href="?logout=1">Logi välja</a>  <br> <br>
 <!DOCTYPE html>
 
 <html lang="en">
