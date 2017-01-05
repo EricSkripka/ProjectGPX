@@ -19,7 +19,8 @@ class Change {
 			$answer = "Muutmine toimus edukalt";
 			$_SESSION['note'] = $answer;
 		} else {
-		 	echo "ERROR ".$stmt->error;
+		 	$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
@@ -34,7 +35,8 @@ class Change {
 		if($stmt->execute()) {
 			echo "Muutmine toimus edukalt";
 		} else {
-		 	echo "ERROR ".$stmt->error;
+		 	$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
@@ -51,61 +53,65 @@ class Change {
 			$answer = "Muutmine toimus edukalt";
 			$_SESSION['note'] = $answer;
 		} else {
-		 	echo "ERROR ".$stmt->error;
+		 	$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
 		}
 		
 		
-		function changeFirstName($changeFirstName, $id) {
-			$stmt = $this->connection->prepare("UPDATE project_user SET firstname=? WHERE id=?");
-			echo $this->connection->error;
-			$stmt->bind_param("si",$changeFirstName, $id);
-			
-			//täida käsu
-			if($stmt->execute()) {
-				$answer = "Muutmine toimus edukalt";
-				$_SESSION['note'] = $answer;
-			} else {
-				echo "ERROR ".$stmt->error;
-			}
-			//panen ühenduse kinni
-			$stmt->close();
-		}
+	function changeFirstName($changeFirstName, $id) {
+		$stmt = $this->connection->prepare("UPDATE project_user SET firstname=? WHERE id=?");
+		echo $this->connection->error;
+		$stmt->bind_param("si",$changeFirstName, $id);
 		
-		function changeLastName($changeLastName, $id) {
-			$stmt = $this->connection->prepare("UPDATE project_user SET lastname=? WHERE id=?");
-			echo $this->connection->error;
-			$stmt->bind_param("si",$changeLastName, $id);
-			
-			//täida käsu
-			if($stmt->execute()) {
-				$answer = "Muutmine toimus edukalt";
-				$_SESSION['note'] = $answer;
-			} else {
-				echo "ERROR ".$stmt->error;
-			}
-			//panen ühenduse kinni
-			$stmt->close();
+		//täida käsu
+		if($stmt->execute()) {
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
+		} else {
+			$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
 		}
+		//panen ühenduse kinni
+		$stmt->close();
+	}
+	
+	function changeLastName($changeLastName, $id) {
+		$stmt = $this->connection->prepare("UPDATE project_user SET lastname=? WHERE id=?");
+		echo $this->connection->error;
+		$stmt->bind_param("si",$changeLastName, $id);
 		
+		//täida käsu
+		if($stmt->execute()) {
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
+		} else {
+			$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
+		}
+		//panen ühenduse kinni
+		$stmt->close();
+	}
+	
+	
+	function changeGender($changeGender, $id) {
+		$stmt = $this->connection->prepare("UPDATE project_user SET gender=? WHERE id=?");
+		echo $this->connection->error;
+		$stmt->bind_param("si",$changeGender, $id);
 		
-		function changeGender($changeGender, $id) {
-			$stmt = $this->connection->prepare("UPDATE project_user SET gender=? WHERE id=?");
-			echo $this->connection->error;
-			$stmt->bind_param("si",$changeGender, $id);
-			
-			//täida käsu
-			if($stmt->execute()) {
-				$answer = "Muutmine toimus edukalt";
-				$_SESSION['note'] = $answer;
-			} else {
-				echo "ERROR ".$stmt->error;
-		}
-			//panen ühenduse kinni
-			$stmt->close();
-		}
+		//täida käsu
+		if($stmt->execute()) {
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
+		} else {
+			$answer = "ERROR ".$stmt->error;
+			$_SESSION['note'] = $answer;
+	}
+		//panen ühenduse kinni
+		$stmt->close();
+	}
 
 }
 ?>
