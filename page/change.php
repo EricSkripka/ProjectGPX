@@ -1,5 +1,10 @@
 <?php
 
+
+#Tegin kasutajate muutmiselehe. Praegu muudab inimeste andmeid aga ei ole kontrolli, kas ta sisestab sama asja või ei ning ei kontrolli parooli pikust"
+#Eraldi ei anna teadet, kui salvestamine õnnestus. Annab siis kui 'Change.class.php' lehel kirjutada eraldi echo-d aga siis kui näiteks muudad 2 asja tuleb ka kaks teadet, et salvestamine õnnestus 
+
+
 require("../../../config.php");
 require("../functions.php");
 require("../class/Change.class.php");
