@@ -1,6 +1,6 @@
 <?php
 class User {
-		private $connection;
+	private $connection;
 			
 		function __construct($mysqli){
 			//This viitab klassile(this == user)

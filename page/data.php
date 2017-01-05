@@ -25,6 +25,7 @@ if (isset($_GET["logout"])) {
 	exit();
 }
 
+/*
 #kontrollid, mis kontrollivad üleslaetavat faili
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
@@ -65,13 +66,13 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 } else {
 	$error4 = "Valige fail, mida üles laadida. ";
 }
-
+*/
 ?>
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Project GPX</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -163,7 +164,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
               <li class="active"><a href="data.php">Home</a></li>
               <li><a href="user.php">User</a></li>
               <li><a href="upload.php">Upload</a></li>
-              <li><a href="#">Link 3</a></li>              
+              <li><a href="change.php">Change</a></li>              
             </ul>
         </div>
   	
@@ -186,7 +187,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 			sort($files);
 			foreach ($files as $file) {
 				if ($file != '.' && $file != '..') {
-					echo  $file;
+					echo $file;
 			?>
 					<a href="../page/map.php?map=<?php echo $file ?>">Kaart</a><br>
 			<?php	

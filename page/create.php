@@ -118,7 +118,7 @@ if(isset($_POST["loginEmail"])){
 
 <html>
 	<head>
-		<h1>Loo kasutaja</h1>
+		<h1>Muuda kasutaja andmeid</h1>
 		<form method="POST"> <br>
 		
 			<input name="signupUsername" placeholder="Kasutajanimi" type="text" value="<?=$signupUsername;?>"> <?=$signupUsernameError; ?> <br><br>
@@ -148,8 +148,6 @@ if(isset($_POST["loginEmail"])){
 				
 			<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Loo kasutaja">
 			<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja"><br><br>
-			
-			<p>On siiski kasjutaja olemas?<a href="login.php"> Vajuta Siia</a></p>
 		
 		</form>
 		
