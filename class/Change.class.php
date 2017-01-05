@@ -1,5 +1,4 @@
 <?php
-$answer = "";
 class Change {
 	private $connection;
 			
@@ -16,10 +15,11 @@ class Change {
 		
 		//täida käsu
 		if($stmt->execute()) {
-			$answer = "Salvestamine õnnestus";
-			#echo $answer;
+			#session_start();
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
 		} else {
-			echo "ERROR ".$stmt->error;
+		 	echo "ERROR ".$stmt->error;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
@@ -32,9 +32,9 @@ class Change {
 		
 		//täida käsu
 		if($stmt->execute()) {
-			$answer = "Salvestamine õnnestus";
+			echo "Muutmine toimus edukalt";
 		} else {
-			echo "ERROR ".$stmt->error;
+		 	echo "ERROR ".$stmt->error;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
@@ -48,9 +48,10 @@ class Change {
 		
 		//täida käsu
 		if($stmt->execute()) {
-			$answer = "Salvestamine õnnestus";
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
 		} else {
-			echo "ERROR ".$stmt->error;
+		 	echo "ERROR ".$stmt->error;
 		}
 		//panen ühenduse kinni
 		$stmt->close();
@@ -64,7 +65,8 @@ class Change {
 			
 			//täida käsu
 			if($stmt->execute()) {
-				$answer = "Salvestamine õnnestus";
+				$answer = "Muutmine toimus edukalt";
+				$_SESSION['note'] = $answer;
 			} else {
 				echo "ERROR ".$stmt->error;
 			}
@@ -79,7 +81,8 @@ class Change {
 			
 			//täida käsu
 			if($stmt->execute()) {
-				$answer = "Salvestamine õnnestus";
+				$answer = "Muutmine toimus edukalt";
+				$_SESSION['note'] = $answer;
 			} else {
 				echo "ERROR ".$stmt->error;
 			}
@@ -95,14 +98,14 @@ class Change {
 			
 			//täida käsu
 			if($stmt->execute()) {
-				$answer = "Salvestamine õnnestus";
+				$answer = "Muutmine toimus edukalt";
+				$_SESSION['note'] = $answer;
 			} else {
 				echo "ERROR ".$stmt->error;
-			}
+		}
 			//panen ühenduse kinni
 			$stmt->close();
 		}
 
 }
-#echo $answer;
 ?>

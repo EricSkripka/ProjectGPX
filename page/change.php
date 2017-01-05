@@ -1,13 +1,12 @@
 <?php
 
-
 #Tegin kasutajate muutmiselehe. Praegu muudab inimeste andmeid aga ei ole kontrolli, kas ta sisestab sama asja või ei ning ei kontrolli parooli pikust"
 #Eraldi ei anna teadet, kui salvestamine õnnestus. Annab siis kui 'Change.class.php' lehel kirjutada eraldi echo-d aga siis kui näiteks muudad 2 asja tuleb ka kaks teadet, et salvestamine õnnestus 
-
 
 require("../../../config.php");
 require("../functions.php");
 require("../class/Change.class.php");
+
 $Change = new Change($mysqli);
 
 //defineerin muutujad
@@ -23,6 +22,10 @@ $changeUsername = "";
 $changeLastName = "";
 $changeLastNameError = "";
 $id = "";
+$answer = "";
+
+
+$answer = $_SESSION['note'];
 
 if(isset($_POST["changeUsername"])) {
 	if(empty($_POST["changeUsername"])){
@@ -52,7 +55,6 @@ if(isset($_POST["changePassword"])) {
 		$Change->changePassword($changePassword, $id);
 	}
 }
-
 
 if(isset($_POST["changeEmail"])) {
 	if(empty($_POST["changeEmail"])){
@@ -100,15 +102,19 @@ if( isset( $_POST["changeGender"] ) ){
 } 
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 <?php require("../header.php");?>
-<h1><a href="user.php"> Tagasi</a></h1>
+<h1><a href="data.php"> Tagasi</a></h1>
 
 <h1>Muuda enda andmeid</h1>
 <h3>Selleks, et muuta enda andmeid kirjuta lihstalt kastidesse uued andmed.</h3>
-<h3>Neid, mida muuta ei taha, jäta tühjaks.</h3>
+<h3>Neid, mida muuta ei taha, jäta tühjaks.</h3><br><br>
+
+<h3>Tulemus: <?php echo $answer; ?></h3><br>
 
 
 <?php #echo $answer ?>
@@ -122,15 +128,15 @@ if( isset( $_POST["changeGender"] ) ){
 		<input type="hidden" name="id" value="<?=$_GET["id"];?>" >
 			
 			<p>Muuda enda kasutajanime<p>
-			<input name="changeUsername" placeholder="Kasutajanimi" type="text">				<?php #echo $changeUsernameError ?> <br><br>
+			<input name="changeUsername" placeholder="Kasutajanimi" type="text">
 			<p>Muuda enda parooli<p>
-			<input name="changePassword" placeholder="Parool" type="password">					<?php #echo $changePasswordError ?> <br><br>
+			<input name="changePassword" placeholder="Parool" type="password">	
 			<p>Muuda enda emaili<p>
-			<input name="changeEmail" placeholder="E-post" type="text">							<?php #echo $changeEmailError ?> <br><br>
+			<input name="changeEmail" placeholder="E-post" type="text">
 			<p>Muuda enda eesnime<p>
-			<input name="changeFirstName" placeholder="Eesnimi" type="text">					<?php #echo $changeFirstNameError ?> <br><br>
+			<input name="changeFirstName" placeholder="Eesnimi" type="text">	
 			<p>Muuda enda perekonnanime<p>
-			<input name="changeLastName" placeholder="Perekonnanimi" type="text">				<?php #echo $changeLastNameError ?> <br><br>		
+			<input name="changeLastName" placeholder="Perekonnanimi" type="text">		
 			<p>Muuda enda sugu<p>
 			<?php if($changeGender == "male") { ?>
 				<input name="changeGender" value="male" type="radio" checked> Mees <br>
@@ -159,4 +165,3 @@ if( isset( $_POST["changeGender"] ) ){
 </div>
 -->
 </html>
-

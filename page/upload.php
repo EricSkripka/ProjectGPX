@@ -162,7 +162,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
               <li><a href="data.php">Home</a></li>
               <li><a href="user.php">User</a></li>
               <li class="active"><a href="upload.php">Upload</a></li>
-              <li><a href="change.php">ChangeLink 3</a></li>              
+              <li><a href="change.php">Change</a></li>              
             </ul>
         </div>
   	
