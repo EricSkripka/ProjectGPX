@@ -129,7 +129,7 @@ $userInterests = $Interest->getUser();
               <li><a href="data.php">Home</a></li>
               <li class="active"><a href="user.php">User</a></li>
               <li><a href="upload.php">Upload</a></li>
-              <li><a href="#">Link 3</a></li>              
+              <li><a href="change.php">Change</a></li>              
             </ul>
         </div>
   	
