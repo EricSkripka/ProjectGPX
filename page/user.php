@@ -21,20 +21,26 @@ if(isset($_GET["logout"])) {
 	exit();
 }
 
-$msg = "";
-if(isset($_SESSION["message"])){
-	$msg = $_SESSION["message"];
+#$msg = "";
+#if(isset($_SESSION["message"])){
+#	$msg = $_SESSION["message"];
 	//kui ühe näitame siis kustuta ära, et pärast refreshi ei näitaks
-	unset($_SESSION["message"]);
-}
+#	unset($_SESSION["message"]);
+#}
+
+
 if(isset($_POST["interest"]) && 
 	!empty($_POST["interest"])){	  
 		$Interest->save($Helper->cleanInput($_POST["interest"]));
 }
+
+
 if ( isset($_POST["userInterest"]) && 
 	!empty($_POST["userInterest"])){
 		$Interest->saveUser($Helper->cleanInput($_POST["userInterest"]));
 }
+
+
 $interests = $Interest->get();
 $userInterests = $Interest->getUser();
 
@@ -143,7 +149,7 @@ $userInterests = $Interest->getUser();
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
 
-			<?=$msg;?>
+			<?#=$msg;?>
 			
 			<h3>Minu hobid</h3>
 			<?php
