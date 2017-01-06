@@ -12,7 +12,6 @@ $Change = new Change($mysqli);
 //defineerin muutujad
 $changeEmailError = "";
 $changePasswordError = "";
-#$changePasswordError2 = "";
 $changeUsernameError = "";
 $changeEmail = "";
 $changeGender = "";
@@ -22,24 +21,21 @@ $changeUsername = "";
 $changeLastName = "";
 $changeLastNameError = "";
 $id = "";
-$answer = "";
+#$answer = "Salvestamine toimus edukalt";
 
-
+#Esimesel korral ei näita tulemust, et muutmine õnnestus. Andmebaasis muudab ära aga kasutajale seda kohe ei ütle. Peab refreshima kaks korda.
+error_reporting(0);	
 $answer = $_SESSION['note'];
+
 
 if(isset($_POST["changeUsername"])) {
 	if(empty($_POST["changeUsername"])){
 		$changeUsernameError = "Kui tahad muuta enda kasutajanime, siis pead sisestama uue kasutajanime";
 	} else {
-		#if($_SESSION["userName"] != $changeUsername){
-		#	echo "Samat kasutajanime ei tohi sisestada";
-		#} else {
-			$_POST["changeUsername"] = $Helper->cleanInput($_POST["changeUsername"]);
-			$changeUsername = $_POST["changeUsername"];
-			$id = $_SESSION["userId"];
-			#echo $changeUsername, $id;
-			$Change->changeUsername($changeUsername, $id);
-		#}
+		$_POST["changeUsername"] = $Helper->cleanInput($_POST["changeUsername"]);
+		$changeUsername = $_POST["changeUsername"];
+		$id = $_SESSION["userId"];
+		$Change->changeUsername($changeUsername, $id);
 	}
 }
 
@@ -51,10 +47,10 @@ if(isset($_POST["changePassword"])) {
 		$_POST["changePassword"] = $Helper->cleanInput($_POST["changePassword"]);
 		$changePassword = hash("sha512", $_POST["changePassword"]);
 		$id = $_SESSION["userId"];
-		#echo $changePassword, $id;
 		$Change->changePassword($changePassword, $id);
 	}
 }
+
 
 if(isset($_POST["changeEmail"])) {
 	if(empty($_POST["changeEmail"])){
@@ -96,11 +92,11 @@ if( isset( $_POST["changeGender"] ) ){
 	if(!empty( $_POST["changeGender"] ) ){
 		$signupGender = $_POST["changeGender"];
 		$id = $_SESSION["userId"];
-		#echo $signupGender;
 		$Change->changeGender($signupGender, $id);
 	}
 } 
 
+#echo $answer;
 ?>
 
 
@@ -125,7 +121,7 @@ if( isset( $_POST["changeGender"] ) ){
 -->
 
 		<form method="POST"> <br>
-		<input type="hidden" name="id" value="<?=$_GET["id"];?>" >
+		<!--<input type="hidden" name="id" value="<?#=$_GET["id"];?>" -->
 			
 			<p>Muuda enda kasutajanime<p>
 			<input name="changeUsername" placeholder="Kasutajanimi" type="text">

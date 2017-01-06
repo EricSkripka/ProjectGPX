@@ -14,8 +14,7 @@ class Change {
 		$stmt->bind_param("si",$changeUsername, $id);
 		
 		//täida käsu
-		if($stmt->execute()) {
-			#session_start();
+		if($stmt->execute()) {		
 			$answer = "Muutmine toimus edukalt";
 			$_SESSION['note'] = $answer;
 		} else {

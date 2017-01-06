@@ -44,15 +44,14 @@ class User {
 			$hash = hash("sha512", $password);
 			if ($hash == $passwordFromDB) {
 				echo "Kasutaja logis sisse ".$id;
-				
-			$_SESSION["userId"] = $id;
-			$_SESSION["userEmail"] = $emailFromDB;
-			$_SESSION["userName"] = $usernameFromDB;
-			$_SESSION["firstName"] = $firstnameFromDB;
-			$_SESSION["lastName"] = $lastnameFromDB;
-			$_SESSION["gender"] = $genderFromDB;
-			header("Location: data.php");
-			exit();
+				$_SESSION["userId"] = $id;
+				$_SESSION["userEmail"] = $emailFromDB;
+				$_SESSION["userName"] = $usernameFromDB;
+				$_SESSION["firstName"] = $firstnameFromDB;
+				$_SESSION["lastName"] = $lastnameFromDB;
+				$_SESSION["gender"] = $genderFromDB;
+				header("Location: data.php");
+				exit();
 			} else {
 				$error = "Vale parool";
 			}

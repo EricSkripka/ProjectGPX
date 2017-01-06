@@ -32,6 +32,8 @@ if(isset($_POST["signupEmail"])){
 		$signupEmail = $_POST["signupEmail"];
 	}
 }
+
+
 if(isset($_POST["signupUsername"])) {
 	if(empty($_POST["signupUsername"])){
 		$signupUsernameError = "Igal kasutajal peab olema kasutajanimi";
@@ -40,6 +42,8 @@ if(isset($_POST["signupUsername"])) {
 		$signupUsername = $_POST["signupUsername"];
 	}
 }
+
+
 if(isset($_POST["signupPassword"])) {
 	if(empty($_POST["signupPassword"])){
 		$signupPasswordError = "Parool peab olema";
@@ -49,6 +53,8 @@ if(isset($_POST["signupPassword"])) {
 		}
 	}
 }
+
+
 if(isset($_POST["signupPassword2"])) {	
 	if(empty($_POST["signupPassword2"])){
 		$signupPasswordError2 = "Parool peab olema";
@@ -70,6 +76,8 @@ if(isset($_POST["signupFirstName"])) {
 		$signupFirstName = $_POST["signupFirstName"];
 	}
 }
+
+
 if(isset($_POST["signupLastName"])) {
 	if(empty($_POST["signupLastName"])){
 		$signupLastNameError = "Perekonnanimi sisestamine on kohustuslik";
@@ -78,11 +86,15 @@ if(isset($_POST["signupLastName"])) {
 		$signupLastName = $_POST["signupLastName"];
 	}
 }
+
+
 if(isset($_POST["signupGender"] ) ){
 	if(!empty( $_POST["signupGender"] ) ){
 		$signupGender = $_POST["signupGender"];
 	}		
 } 
+
+
 if(isset($_POST["signupEmail"]) && 
 	isset($_POST["signupPassword"]) &&
 	isset($_POST["signupPassword2"]) &&
@@ -108,6 +120,7 @@ if(isset($_POST["loginEmail"])){
 		}
 	}
 }
+
 ?>
 
 <!DOCTYPE html>
