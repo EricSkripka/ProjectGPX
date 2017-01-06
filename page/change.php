@@ -121,19 +121,18 @@ if( isset( $_POST["changeGender"] ) ){
 -->
 
 		<form method="POST"> <br>
-		<!--<input type="hidden" name="id" value="<?#=$_GET["id"];?>" -->
 			
-			<p>Muuda enda kasutajanime<p>
-			<input name="changeUsername" placeholder="Kasutajanimi" type="text">
-			<p>Muuda enda parooli<p>
-			<input name="changePassword" placeholder="Parool" type="password">	
-			<p>Muuda enda emaili<p>
-			<input name="changeEmail" placeholder="E-post" type="text">
-			<p>Muuda enda eesnime<p>
-			<input name="changeFirstName" placeholder="Eesnimi" type="text">	
-			<p>Muuda enda perekonnanime<p>
-			<input name="changeLastName" placeholder="Perekonnanimi" type="text">		
-			<p>Muuda enda sugu<p>
+			<label>Muuda enda kasutajanime</label> <br>
+			<input name="changeUsername" placeholder="Kasutajanimi" type="text"> <br><br>
+			<label>Muuda enda parooli</label> <br>
+			<input name="changePassword" placeholder="Parool" type="password"> <br><br>
+			<label>Muuda enda emaili</label> <br>
+			<input name="changeEmail" placeholder="E-post" type="text"> <br><br>
+			<label>Muuda enda eesnime</label> <br>
+			<input name="changeFirstName" placeholder="Eesnimi" type="text"> <br><br>
+			<label>Muuda enda perekonnanime</label> <br>
+			<input name="changeLastName" placeholder="Perekonnanimi" type="text"> <br><br>	
+			<label>Muuda enda sugu</label> <br>
 			<?php if($changeGender == "male") { ?>
 				<input name="changeGender" value="male" type="radio" checked> Mees <br>
 			<?php }else { ?> <!--Tühikud peavad olema-->

@@ -4,6 +4,10 @@ require("../functions.php");
 require("../class/Interest.class.php");
 $Interest = new Interest($mysqli);
 
+#defineerin muutujad
+$answer = "";
+$answer2 = "";
+
 //kui on sisse logitud siis suunan login.php lehele
 if(!isset($_SESSION["userId"])){
 	header("Location: login.php");
@@ -33,11 +37,6 @@ if ( isset($_POST["userInterest"]) &&
 }
 $interests = $Interest->get();
 $userInterests = $Interest->getUser();
-
-error_reporting(0);
-$answer = $_SESSION['note'];
-$answer2 = $_SESSION['note2'];
-$answer3 = $_SESSION['note3'];
 
 ?>
 
@@ -146,8 +145,7 @@ $answer3 = $_SESSION['note3'];
 
 			<?=$msg;?>
 			
-			<h4>Salvesta hobi</h4>
-			<br>
+			<h3>Minu hobid</h3>
 			<?php
 			$listHtml = "<ul>";
 			foreach($userInterests as $i){
@@ -155,24 +153,11 @@ $answer3 = $_SESSION['note3'];
 			}
 			$listHtml .= "</ul>";
 			echo $listHtml;
-			
 			?>
 			
-			<?php echo $answer ?>
-			<?php echo $answer3 ?>
-			
-			<form method="POST">
-			
-				<label>Hobi/huviala nimi</label><br>
-				<input name="interest" type="text">
-				<input type="submit" value="Salvesta">
-
-			</form>
-			<h4>Kasutaja hobid</h4>
-			<br>
 			<form method="POST">
 				
-				<label>Hobi/huviala nimi</label><br>
+				<label>Hobi nimi</label><br>
 				<select name="userInterest" type="text">
 					<?php
 						$listHtml = "";
@@ -182,12 +167,31 @@ $answer3 = $_SESSION['note3'];
 						echo $listHtml;
 					?>
 				</select>
-				<input type="submit" value="Lisa">
-				<?php echo $answer2 ?>
+				<input type="submit" value="Lisa"> <br>
+
+					<?php if($answer2 == "" ){ ?>
+						<h3>Tulemus: </h3> <?php error_reporting(0);
+						$answer2 = $_SESSION['note2'];
+						echo $answer2;}
+				?>
+				
 			</form></p>
-    
-          
-          
+			
+			<h3>Lisa juurde hobi</h3>
+			<form method="POST">
+			
+				<label>Hobi nimi</label><br>
+				<input name="interest" type="text">
+				<input type="submit" value="Salvesta">
+				
+				<?php if($answer == ""){ ?>
+						<h3>Tulemus: </h3> <?php error_reporting(0);
+						$answer = $_SESSION['note'];
+						echo $answer; }?>
+
+			</form>
+			<br>
+			          
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
   </div><!--/.container-->
