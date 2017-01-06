@@ -33,7 +33,14 @@ if ( isset($_POST["userInterest"]) &&
 }
 $interests = $Interest->get();
 $userInterests = $Interest->getUser();
+
+error_reporting(0);
+$answer = $_SESSION['note'];
+$answer2 = $_SESSION['note2'];
+$answer3 = $_SESSION['note3'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,10 +143,7 @@ $userInterests = $Interest->getUser();
         <!-- main area -->
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
-          
-			
-    
-			
+
 			<?=$msg;?>
 			
 			<h4>Salvesta hobi</h4>
@@ -152,7 +156,11 @@ $userInterests = $Interest->getUser();
 			$listHtml .= "</ul>";
 			echo $listHtml;
 			
-			?>  
+			?>
+			
+			<?php echo $answer ?>
+			<?php echo $answer3 ?>
+			
 			<form method="POST">
 			
 				<label>Hobi/huviala nimi</label><br>
@@ -175,6 +183,7 @@ $userInterests = $Interest->getUser();
 					?>
 				</select>
 				<input type="submit" value="Lisa">
+				<?php echo $answer2 ?>
 			</form></p>
     
           

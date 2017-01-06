@@ -31,6 +31,7 @@ if(isset($_POST["loginEmail"])){
 		}
 	}
 }
+
 ?>
 
 <!DOCTYPE html>

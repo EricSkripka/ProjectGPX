@@ -56,7 +56,8 @@ function save ($interest) {
 	$stmt->bind_param("s", $interest);
 	
 	if($stmt->execute()) {
-		echo "Salvestamine õnnestus";
+		$answer = "Salvestamine õnnestus.";
+		$_SESSION['note'] = $answer;
 	} else {
 		echo "ERROR ".$stmt->error;
 	}
@@ -72,7 +73,8 @@ function saveUser ($interest) {
 	
 	if ($stmt->fetch()) {
 		// oli olemas juba selline rida
-	echo "juba olemas";
+		$answer3 = "Hobi, mida tahate lisada, on juba olemas.";
+		$_SESSION['note3'] = $answer3;
 		// pärast returni midagi edasi ei tehta funktsioonis
 		return;
 	} 
@@ -86,7 +88,9 @@ function saveUser ($interest) {
 	$stmt->bind_param("ii", $_SESSION["userId"], $interest);
 	
 	if ($stmt->execute()) {
-		echo "Salvestamine õnnestus";
+		#echo "Salvestamine õnnestus";
+		$answer2 = "Salvestamine õnnestus.";
+		$_SESSION['note2'] = $answer2;
 	} else {
 		echo "ERROR ".$stmt->error;
 	}
