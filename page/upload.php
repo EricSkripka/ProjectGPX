@@ -27,9 +27,9 @@ if (isset($_GET["logout"])) {
 
 #kontrollid, mis kontrollivad ülaetavat faili
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
-	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
+	$target_username  = $_SESSION["userName"] . ": " . basename($_FILES["fileToUpload"]["name"]);
 	$target_dir = "../uploads/";
-    $target_file = $target_dir . $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
+    $target_file = $target_dir . $_SESSION["userName"] . ": " . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $GPXFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
@@ -55,16 +55,14 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
     } else {
 		#Kui fail laetakse üles siis antakse ka teade, et see juhtus aga kui ei laetud siis antakse veateade
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$error3 = "Fail ". $target_username. " laeti üles. ";
+			$error3 = 'Fail "'. $target_username.'" laeti üles. ';
 			
         } else {
             $error3 = "Vabandust, faili laadimisega tekkis probleem. ";
         }
     }
-#Kui ei ole faili valitud ja vajutatakse ülaadimis nuppu, antakse veateade
-} else {
-	$error4 = "Valige fail, mida üles laadida. ";
 }
+
 ?>
 <!DOCTYPE html>
 
@@ -159,10 +157,10 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <!-- sidebar -->
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
-              <li><a href="data.php">Home</a></li>
-              <li><a href="user.php">User</a></li>
-              <li class="active"><a href="upload.php">Upload</a></li>
-              <li><a href="change.php">Change</a></li>              
+              <li><a href="data.php">Kodu</a></li>
+              <li><a href="user.php">Hobid</a></li>
+              <li class="active"><a href="upload.php">Lae üles</a></li>
+              <li><a href="change.php">Muuda andmeid</a></li>              
             </ul>
         </div>
   	
@@ -170,18 +168,12 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
 		  <form action="upload.php" method="post" enctype="multipart/form-data">
-				<p>Valige .GPX fail, mida soovite üles laadida:<p>
+				<label>Valige .GPX fail, mida soovite üles laadida</label><br>
+				<p style="color:red;"><?=$error, $error2;?></p>
+				<p style="color:green;"><?=$error3;?></p><br>
 				<input type="file" name="fileToUpload" id="fileToUpload"> <br>
-				<input type="submit" value="Upload gpx" name="submit">
-			</form>
-
-			<!--Kuvab erinevad veateated-->
-			<?php echo $error, $error2, $error3, $error4 ?>
-    
-			
-		
-    
-          
+				<input type="submit" value="Lae üles" name="submit">
+			</form>    
           
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->

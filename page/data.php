@@ -161,10 +161,10 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <!-- sidebar -->
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
-              <li class="active"><a href="data.php">Home</a></li>
-              <li><a href="user.php">User</a></li>
-              <li><a href="upload.php">Upload</a></li>
-              <li><a href="change.php">Change</a></li>              
+              <li class="active"><a href="data.php">Kodu</a></li>
+              <li><a href="user.php">Hobid</a></li>
+              <li><a href="upload.php">Lae üles</a></li>
+              <li><a href="change.php">Muuda andmeid</a></li>              
             </ul>
         </div>
   	
@@ -174,7 +174,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
           
 			
     
-          <p>Project Gpx home page siia peaks veel teksti tulema v mdea mingi äge asi</p>
+          <p>Tere tulemast Project GPX kodulehele!</p>
 		  
 		  <!--Kuvab juba üles laetud failid-->
 			<h3>Olemasolevad GPX failid:</h3>

@@ -21,26 +21,19 @@ if(isset($_GET["logout"])) {
 	exit();
 }
 
-#$msg = "";
-#if(isset($_SESSION["message"])){
-#	$msg = $_SESSION["message"];
-	//kui ühe näitame siis kustuta ära, et pärast refreshi ei näitaks
-#	unset($_SESSION["message"]);
-#}
-
-
+#hobi juurde lisamine andmebaasi kontroll
 if(isset($_POST["interest"]) && 
 	!empty($_POST["interest"])){	  
 		$Interest->save($Helper->cleanInput($_POST["interest"]));
 }
 
-
+#hobi enda profiili alla lisamise kontroll
 if ( isset($_POST["userInterest"]) && 
 	!empty($_POST["userInterest"])){
 		$Interest->saveUser($Helper->cleanInput($_POST["userInterest"]));
 }
 
-
+#suunatakse funktsiooni koos väärtustega
 $interests = $Interest->get();
 $userInterests = $Interest->getUser();
 
@@ -138,10 +131,10 @@ $userInterests = $Interest->getUser();
         <!-- sidebar -->
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
-              <li><a href="data.php">Home</a></li>
-              <li class="active"><a href="user.php">User</a></li>
-              <li><a href="upload.php">Upload</a></li>
-              <li><a href="change.php">Change</a></li>              
+              <li><a href="data.php">Kodu</a></li>
+              <li class="active"><a href="user.php">Hobid</a></li>
+              <li><a href="upload.php">Lae üles</a></li>
+              <li><a href="change.php">Muuda andmeid</a></li>              
             </ul>
         </div>
   	
@@ -151,6 +144,7 @@ $userInterests = $Interest->getUser();
 
 			<?#=$msg;?>
 			
+			<!-- Prinib välja kasutaja enda hobid -->
 			<h3>Minu hobid</h3>
 			<?php
 			$listHtml = "<ul>";
@@ -163,6 +157,7 @@ $userInterests = $Interest->getUser();
 			
 			<form method="POST">
 				
+				<!-- Prindib välja kasutajate poolt lisatud hobid, mida saab enda profiili lisada-->
 				<label>Hobi nimi</label><br>
 				<select name="userInterest" type="text">
 					<?php
@@ -174,26 +169,36 @@ $userInterests = $Interest->getUser();
 					?>
 				</select>
 				<input type="submit" value="Lisa"> <br>
-
-					<?php if($answer2 == "" ){ ?>
-						<h3>Tulemus: </h3> <?php error_reporting(0);
-						$answer2 = $_SESSION['note2'];
-						echo $answer2;}
-				?>
+				<!--Vastavalt sellele, kas operatsioon õnnestus prinditakse välja vastav teade. Kui õnnestus siis rohelist värvi, kui ei suus punast värvi-->
+					<?php if($answer2 == "" ){
+							error_reporting(0);
+							$answer2 = $_SESSION['note2'];
+							#unset($_SESSION["note2"]);
+							if($answer2 == "Salvestamine õnnestus."){ ?>
+								<p style="color:green;"><?=$answer2;?></p>
+							<?php } else { ?>
+								<p style="color:red;"><?=$answer2;?></p>
+							<?php
+							}
+					}?>
 				
-			</form></p>
-			
+			</form>
+			<!--Kui andmebaasis mingi hobi puudub, saab siit kaudu juurde lisada-->
 			<h3>Lisa juurde hobi</h3>
 			<form method="POST">
 			
 				<label>Hobi nimi</label><br>
 				<input name="interest" type="text">
 				<input type="submit" value="Salvesta">
-				
-				<?php if($answer == ""){ ?>
-						<h3>Tulemus: </h3> <?php error_reporting(0);
-						$answer = $_SESSION['note'];
-						echo $answer; }?>
+				<!--Kui operatsioon õnnestus siis prinditakse väla teade rohelise värviga-->
+				<?php if($answer == ""){
+						error_reporting(0);
+						$answer = $_SESSION['note'];?>
+						<p style="color:green;"><?=$answer;?></p>
+						<?php
+						#unset($_SESSION["note"]);}
+						}
+						?>
 
 			</form>
 			<br>

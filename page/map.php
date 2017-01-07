@@ -1,15 +1,19 @@
 <?php  
+
 #võtan url-i realt muutuja
 $fail = $_GET['map'];
 #Kuvan ka üleval selle faili nime
-echo $fail;
+
+#echo "Praegu vaatad faili nimega ".$fail;
 
 $url = "../uploads/$fail";
 #$url = "../uploads/patu--20161114_153234.gpx";
 ?>
 <!DOCTYPE html>
+<?php require("../header.php");?>
 <html>
   <head>
+	<h3><?php echo "Praegu vaatad faili nimega ".$fail;?></h3>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <title>Google Maps</title>
