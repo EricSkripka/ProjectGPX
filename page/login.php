@@ -24,6 +24,7 @@ if(isset($_POST["loginEmail"])){
 	if(!empty($_POST["loginEmail"])){
 		$_POST["loginEmail"] = $Helper->cleanInput($_POST["loginEmail"]);
 		$loginEmail = $_POST["loginEmail"];
+		#$notice = $User->login($_POST["loginEmail"]); 
 		if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) && 
 			!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"])){
 				$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
@@ -56,7 +57,7 @@ if(isset($_POST["loginEmail"])){
 		<form method="POST">
 			<div class="form-group">
 				<input class="form-control" placeholder="E-mail" name="loginEmail" type="text" value="<?=$loginEmail;?>"> <p style="color:red;"><?=$loginEmailError;?>
-				<?php if($notice != "Vale parool"){?>
+				<?php if($notice != "Vale parool või kasutajanimi"){?>
 				<p style="color:red;"><?=$notice;?></p>
 				<?php 
 				}?>

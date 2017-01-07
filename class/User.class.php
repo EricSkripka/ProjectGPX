@@ -53,7 +53,7 @@ class User {
 				header("Location: data.php");
 				exit();
 			} else {
-				$error = "Vale parool";
+				$error = "Vale parool või kasutajanimi";
 			}
 			//määran sessiooni muutujad
 			//header("Location: login.php");
