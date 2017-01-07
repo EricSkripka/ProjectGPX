@@ -134,12 +134,12 @@ if(isset($_POST["loginEmail"])){
 		<h1>Loo uus kasutaja</h1>
 		<form method="POST"> <br>
 		
-			<input name="signupUsername" placeholder="Kasutajanimi" type="text" value="<?=$signupUsername;?>"> <?=$signupUsernameError; ?> <br><br>
-			<input name="signupPassword" placeholder="Parool" type="password"> <?php echo $signupPasswordError; ?> <br><br>
-			<input name="signupPassword2" placeholder="Sisesta parool uuesti" type="password"> <?php echo $signupPasswordError2; ?> <br><br>
-			<input name="signupEmail" placeholder="E-post" type="text" value="<?=$signupEmail;?>"> <?php echo $signupEmailError; ?> <br><br>
-			<input name="signupFirstName" placeholder="Eesnimi" type="text" value="<?=$signupFirstName;?>"> <?php echo $signupFirstNameError; ?> <br><br>
-			<input name="signupLastName" placeholder="Perekonnanimi" type="text" value="<?=$signupLastName;?>"> <?php echo $signupLastNameError; ?> <br><br>
+			<input name="signupUsername" placeholder="Kasutajanimi" type="text" value="<?=$signupUsername;?>"> <p style="color:red;"><?=$signupUsernameError;?></p> 
+			<input name="signupPassword" placeholder="Parool" type="password"> <p style="color:red;"><?=$signupPasswordError;?></p>
+			<input name="signupPassword2" placeholder="Sisesta parool uuesti" type="password">  <p style="color:red;"><?=$signupPasswordError2;?></p>
+			<input name="signupEmail" placeholder="E-post" type="text" value="<?=$signupEmail;?>">  <p style="color:red;"><?=$signupEmailError;?></p>
+			<input name="signupFirstName" placeholder="Eesnimi" type="text" value="<?=$signupFirstName;?>">  <p style="color:red;"><?=$signupFirstNameError;?></p>
+			<input name="signupLastName" placeholder="Perekonnanimi" type="text" value="<?=$signupLastName;?>">  <p style="color:red;"><?=$signupLastNameError;?></p>
 			
 			<?php if($signupGender == "male") { ?>
 				<input name="signupGender" value="male" type="radio" checked> Mees <br>
