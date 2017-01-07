@@ -57,9 +57,6 @@ class User {
 			}
 			//määran sessiooni muutujad
 			//header("Location: login.php");
-		} else {
-			//ei ole sellist kasutajat selle meiliga
-			$error = "Ei ole sellist e-maili";
 		}
 		return $error;
 	}

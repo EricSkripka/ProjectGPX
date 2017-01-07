@@ -57,17 +57,10 @@ if(isset($_POST["loginEmail"])){
 		<form method="POST">
 			<div class="form-group">
 				<input class="form-control" placeholder="E-mail" name="loginEmail" type="text" value="<?=$loginEmail;?>"> <p style="color:red;"><?=$loginEmailError;?>
-				<?php if($notice != "Vale parool või kasutajanimi"){?>
-				<p style="color:red;"><?=$notice;?></p>
-				<?php 
-				}?>
 			</div>
 			<div class="form-group">
-				<input class="form-control" placeholder="Parool" name="loginPassword" type="password"> <br> <p style="color:red;"><?=$loginPasswordError;?>
-				<?php if($notice != "Ei ole sellist e-maili"){?>
-				<p style="color:red;"><?=$notice;?></p>
-				<?php 
-				}?>
+				<input class="form-control" placeholder="Parool" name="loginPassword" type="password"> <br> <p style="color:red;"><?=$loginPasswordError;?> <br>
+				<?php if($notice != ""){?> <p style="color:red;"><?=$notice;?></p><?php	}?>
 				<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse"> <br>
 				<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse"><br><br>
 			<p>Pole kasutajat? <a href="create.php"> Vajuta Siia</a></p>
