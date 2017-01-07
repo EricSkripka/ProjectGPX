@@ -24,6 +24,13 @@ $id = "";
 #$answer = "Salvestamine toimus edukalt";
 
 #Esimesel korral ei näita tulemust, et muutmine õnnestus. Andmebaasis muudab ära aga kasutajale seda kohe ei ütle. Peab refreshima kaks korda. Tõenäoliselt tuleneb se sellest, kuidas ma seda muutujat trantspordin
+if (!isset($_SESSION["userId"])){
+	//suunan sisselogimise lehele
+	header("Location: login.php");	
+	exit();
+}
+
+
 error_reporting(0);	
 $answer = $_SESSION['note'];
 

@@ -12,25 +12,31 @@ if (isset($_SESSION["userId"])){
 }
 
 #defineerib muutujad
-$loginEmail2 = "";
+$loginEmail = "";
 $loginEmailError = "";
 $loginPasswordError = "";
 $notice = "";
+
+
 
 #sisse logimise kontrollid e-maili ja paroolide jaoks
 if(isset($_POST["loginEmail"])){
 	if(!empty($_POST["loginEmail"])){
 		$_POST["loginEmail"] = $Helper->cleanInput($_POST["loginEmail"]);
+		$loginEmail = $_POST["loginEmail"];
 		if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) && 
 			!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"])){
 				$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
-				$loginEmail2 = $_POST["loginEmail"];
+				$loginEmail = $_POST["loginEmail"];
 		} else {
-			$loginEmailError = "Sisselogimiseks peab sisestama e-maili";
+			#$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
+			$loginEmail = $_POST["loginEmail"];
+			#$loginEmailError = "Sisselogimiseks peab sisestama e-maili";
 			$loginPasswordError = "Sisselogimiseks peab sisetama parooli";
 		}
 	}
 }
+
 
 ?>
 
@@ -48,13 +54,20 @@ if(isset($_POST["loginEmail"])){
 	
 		<h1>Logi sisse</h1><br>
 		<form method="POST">
-			<p style="color:red;"><?=$notice;?></p>
 			<div class="form-group">
-				<input class="form-control" placeholder="E-mail" name="loginEmail" type="text" value="<?=$loginEmail2;?>"> <?php echo $loginEmailError; ?>
+				<input class="form-control" placeholder="E-mail" name="loginEmail" type="text" value="<?=$loginEmail;?>"> <p style="color:red;"><?=$loginEmailError;?>
+				<?php if($notice != "Vale parool"){?>
+				<p style="color:red;"><?=$notice;?></p>
+				<?php 
+				}?>
 			</div>
 			<div class="form-group">
-				<input class="form-control" placeholder="Parool" name="loginPassword" type="password"> <?php echo $loginPasswordError; ?> <br><br>
-				<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse">
+				<input class="form-control" placeholder="Parool" name="loginPassword" type="password"> <br> <p style="color:red;"><?=$loginPasswordError;?>
+				<?php if($notice != "Ei ole sellist e-maili"){?>
+				<p style="color:red;"><?=$notice;?></p>
+				<?php 
+				}?>
+				<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Logi sisse"> <br>
 				<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi sisse"><br><br>
 			<p>Pole kasutajat? <a href="create.php"> Vajuta Siia</a></p>
 			</div>
