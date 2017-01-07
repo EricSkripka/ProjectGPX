@@ -18,14 +18,14 @@ if (!isset($_SESSION["userId"])){
 	exit();
 }
 
-#kui on ?logout aadressireal siis login v?a
+#kui on ?logout aadressireal siis login välja
 if (isset($_GET["logout"])) {
 	session_destroy();
 	header("Location: login.php");
 	exit();
 }
 
-#kontrollid, mis kontrollivad ??laetavat faili
+#kontrollid, mis kontrollivad ülaetavat faili
 if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
 	$target_username  = $_SESSION["userName"] . "--" . basename($_FILES["fileToUpload"]["name"]);
 	$target_dir = "../uploads/";
@@ -48,20 +48,20 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         $error = "Ainult .gpx failid on lubatud. ";
         $uploadOk = 0;
     }
-	#Kui on tekkinud error, siis kuvatakse j?nev veateade
+	#Kui on tekkinud error, siis kuvatakse järgnev veateade
     if ($uploadOk == 0) {
-       $error2 = "Seda faili ei laetud ??.";
-	#Kui oli k??korras siis laetakse fail ??
+       $error2 = "Seda faili ei laetud üles.";
+	#Kui oli korras siis laetakse fail üles
     } else {
-		#Kui fail laetakse ?? siis antakse ka teade, et see juhtus aga kui ei laetud siis antakse veateade
+		#Kui fail laetakse üles siis antakse ka teade, et see juhtus aga kui ei laetud siis antakse veateade
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			$error3 = "Fail ". $target_username. " laeti ??. ";
+			$error3 = "Fail ". $target_username. " laeti üles. ";
 			
         } else {
             $error3 = "Vabandust, faili laadimisega tekkis probleem. ";
         }
     }
-#Kui ei ole faili valitud ja vajutatakse ??laadimis nuppu, antakse veateade
+#Kui ei ole faili valitud ja vajutatakse ülaadimis nuppu, antakse veateade
 } else {
 	$error4 = "Valige fail, mida üles laadida. ";
 }
@@ -169,7 +169,7 @@ if(isset($_FILES["fileToUpload"]) && !empty($_FILES["fileToUpload"]["name"])){
         <!-- main area -->
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
-          <form action="data.php" method="post" enctype="multipart/form-data">
+		  <form action="upload.php" method="post" enctype="multipart/form-data">
 				<p>Valige .GPX fail, mida soovite üles laadida:<p>
 				<input type="file" name="fileToUpload" id="fileToUpload"> <br>
 				<input type="submit" value="Upload gpx" name="submit">
