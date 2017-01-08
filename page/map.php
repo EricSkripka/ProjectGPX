@@ -7,11 +7,11 @@ $fail = $_GET['map'];
 $url = "../uploads/$fail";
 
 
-if (!isset($_SESSION["userId"])){
+#if (!isset($_SESSION["userId"])){
 	//suunan sisselogimise lehele
-	header("Location: login.php");	
-	exit();
-}
+#	header("Location: login.php");	
+#	exit();
+#}
 
 ?>
 <!DOCTYPE html>
