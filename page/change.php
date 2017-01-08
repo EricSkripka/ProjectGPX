@@ -10,15 +10,16 @@ require("../class/Change.class.php");
 $Change = new Change($mysqli);
 
 //defineerin muutujad
-$changeEmailError = "";
-$changePasswordError = "";
-$changeUsernameError = "";
+
+$changeUsername = "";
 $changeEmail = "";
 $changeGender = "";
 $changeFirstName= "";
-$changeFirstNameError = "";
-$changeUsername = "";
 $changeLastName = "";
+$changeUsernameError = "";
+$changePasswordError = "";
+$changeEmailError = "";
+$changeFirstNameError = "";
 $changeLastNameError = "";
 $id = "";
 
@@ -29,20 +30,32 @@ if (!isset($_SESSION["userId"])){
 	exit();
 }
 
+if (isset($_GET["logout"])) {
+	session_destroy();
+	header("Location: login.php");
+	exit();
+}
+
+
 #võtab Change.class.php lehelt muutuja. Kuna ei osanud note-i defineerida, siis on selle ees funktsioon, et ei näitaks errorit
 error_reporting(0);	
-$answer = $_SESSION['note'];
+$answer= $_SESSION['note'];
+
 
 #kontrollib, kas on sisestatud uus kasutajanimi
 if(isset($_POST["changeUsername"])) {
 	if(empty($_POST["changeUsername"])){
 		$changeUsernameError = "Kui tahad muuta enda kasutajanime, siis pead sisestama uue kasutajanime";
 	} else {
-		$_POST["changeUsername"] = $Helper->cleanInput($_POST["changeUsername"]);
-		$changeUsername = $_POST["changeUsername"];
-		$id = $_SESSION["userId"];
-		$Change->changeUsername($changeUsername, $id);
-	}
+		if($_SESSION["userName"] == $_POST["changeUsername"]){
+			$sameUsername = "Kasutajanime vahetamiseks sisesta uus nimi";
+		} else {
+			$_POST["changeUsername"] = $Helper->cleanInput($_POST["changeUsername"]);
+			$changeUsername = $_POST["changeUsername"];
+			$id = $_SESSION["userId"];
+			$Change->changeUsername($changeUsername, $id);
+		}
+	} 
 }
 
 #kontrollib, kas on sisestatud uus parool
@@ -62,10 +75,14 @@ if(isset($_POST["changeEmail"])) {
 	if(empty($_POST["changeEmail"])){
 		$changeEmailError = "Kui tahad muuta enda emaili, siis pead sisestama uue emaili";
 	} else {
-		$_POST["changeEmail"] = $Helper->cleanInput($_POST["changeEmail"]);
-		$changeEmail = $_POST["changeEmail"];
-		$id = $_SESSION["userId"];
-		$Change->changeEmail($changeEmail, $id);
+		if($_SESSION["userEmail"] == $_POST["changeEmail"]){
+			$sameEmail = "E-maili vahetamiseks sisesta uus e-mail";
+		} else {		
+			$_POST["changeEmail"] = $Helper->cleanInput($_POST["changeEmail"]);
+			$changeEmail = $_POST["changeEmail"];
+			$id = $_SESSION["userId"];
+			$Change->changeEmail($changeEmail, $id);
+		}
 	}
 }
 
@@ -74,10 +91,14 @@ if(isset($_POST["changeFirstName"])) {
 	if(empty($_POST["changeFirstName"])){
 		$changeFirstNameError = "Kui tahad muuta enda eesnime, siis pead sisestama uue eesnime";
 	} else {
-		$_POST["changeFirstName"] = $Helper->cleanInput($_POST["changeFirstName"]);
-		$changeFirstName = $_POST["changeFirstName"];
-		$id = $_SESSION["userId"];
-		$Change->changeFirstName($changeFirstName, $id);
+		if($_SESSION["firstName"] == $_POST["changeFirstName"]){
+			$sameFirstname = "Eesnime vahetamiseks sisesta uus eesnimi";
+		} else {
+			$_POST["changeFirstName"] = $Helper->cleanInput($_POST["changeFirstName"]);
+			$changeFirstName = $_POST["changeFirstName"];
+			$id = $_SESSION["userId"];
+			$Change->changeFirstName($changeFirstName, $id);
+		}
 	}
 }
 
@@ -86,10 +107,14 @@ if(isset($_POST["changeLastName"])) {
 	if(empty($_POST["changeLastName"])){
 		$changeLastNameError = "Kui tahad muuta enda perekonnanime, siis pead sisestama uue perekonnanime";
 	} else {
-		$_POST["changeLastName"] = $Helper->cleanInput($_POST["changeLastName"]);
-		$changeLastName = $_POST["changeLastName"];
-		$id = $_SESSION["userId"];
-		$Change->changeLastName($changeLastName, $id);
+		if($_SESSION["lastName"] == $_POST["changeLastName"]) {
+			$sameLasttname = "Perekonnanime vahetamiseks sisesta uus perekonnanimi";
+		} else {
+			$_POST["changeLastName"] = $Helper->cleanInput($_POST["changeLastName"]);
+			$changeLastName = $_POST["changeLastName"];
+			$id = $_SESSION["userId"];
+			$Change->changeLastName($changeLastName, $id);
+		}
 	}
 }
 
@@ -103,11 +128,12 @@ if( isset( $_POST["changeGender"] ) ){
 } 
 
 
+
 ?>
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 	<!--Siis on kõik disainielemendid -->
   <title>Project GPX</title>
@@ -214,7 +240,7 @@ if( isset( $_POST["changeGender"] ) ){
 <h3>Selleks, et muuta enda andmeid kirjuta lihstalt kastidesse uued andmed.</h3>
 <h3>Neid, mida muuta ei taha, jäta tühjaks.</h3><br>
 
-<h3>Tulemus: <?php echo $answer; ?></h3><br>
+<h3>Tulemus:</h3> <p style="color:green;"><?=$answer;?></p><br>
 
 
  <!--Uute andmete sisestamine-->
@@ -222,14 +248,18 @@ if( isset( $_POST["changeGender"] ) ){
 			
 			<label>Muuda enda kasutajanime</label> <br>
 			<input name="changeUsername" placeholder="Kasutajanimi" type="text"> <br><br>
+			<p style="color:red;"><?=$sameUsername;?></p>
 			<label>Muuda enda parooli</label> <br>
 			<input name="changePassword" placeholder="Parool" type="password"> <br><br>
 			<label>Muuda enda emaili</label> <br>
 			<input name="changeEmail" placeholder="E-post" type="text"> <br><br>
+			<p style="color:red;"><?=$sameEmail;?></p>
 			<label>Muuda enda eesnime</label> <br>
 			<input name="changeFirstName" placeholder="Eesnimi" type="text"> <br><br>
+			<p style="color:red;"><?=$sameFirstname;?></p>
 			<label>Muuda enda perekonnanime</label> <br>
 			<input name="changeLastName" placeholder="Perekonnanimi" type="text"> <br><br>	
+			<p style="color:red;"><?=$sameLasttname;?></p>
 			<label>Muuda enda sugu</label> <br>
 			<?php if($changeGender == "male") { ?>
 				<input name="changeGender" value="male" type="radio" checked> Mees <br>

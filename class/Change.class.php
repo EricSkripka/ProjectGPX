@@ -32,7 +32,8 @@ class Change {
 		
 		//täida käsu
 		if($stmt->execute()) {
-			echo "Muutmine toimus edukalt";
+			$answer = "Muutmine toimus edukalt";
+			$_SESSION['note'] = $answer;
 		} else {
 		 	$answer = "ERROR ".$stmt->error;
 			$_SESSION['note'] = $answer;
