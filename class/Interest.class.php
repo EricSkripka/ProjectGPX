@@ -87,7 +87,6 @@ class Interest {
 		$stmt->bind_param("ii", $_SESSION["userId"], $interest);
 		
 		if ($stmt->execute()) {
-			#echo "Salvestamine õnnestus";
 			$answer2 = "Salvestamine õnnestus.";
 			$_SESSION['note2'] = $answer2;
 		} else {

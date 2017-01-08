@@ -21,7 +21,6 @@ $changeUsername = "";
 $changeLastName = "";
 $changeLastNameError = "";
 $id = "";
-#$answer = "Salvestamine toimus edukalt";
 
 #Esimesel korral ei näita tulemust, et muutmine õnnestus. Andmebaasis muudab ära aga kasutajale seda kohe ei ütle. Peab refreshima kaks korda. Tõenäoliselt tuleneb se sellest, kuidas ma seda muutujat trantspordin
 if (!isset($_SESSION["userId"])){
@@ -103,7 +102,7 @@ if( isset( $_POST["changeGender"] ) ){
 	}
 } 
 
-#echo $answer;
+
 ?>
 
 
@@ -218,12 +217,6 @@ if( isset( $_POST["changeGender"] ) ){
 <h3>Tulemus: <?php echo $answer; ?></h3><br>
 
 
-<?php #echo $answer ?>
-
-<!--<div class="container">
-	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4">
--->
  <!--Uute andmete sisestamine-->
 		<form method="POST"> <br>
 			
@@ -259,11 +252,6 @@ if( isset( $_POST["changeGender"] ) ){
 			<input type="submit" name="change" value="Muuda"><br><br>
 			
 		</form>
-		
-<!--		</div>
-	</div>
-</div>
--->
 
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->

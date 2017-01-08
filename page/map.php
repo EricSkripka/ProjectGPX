@@ -4,10 +4,8 @@
 $fail = $_GET['map'];
 #Kuvan ka üleval selle faili nime
 
-#echo "Praegu vaatad faili nimega ".$fail;
-
 $url = "../uploads/$fail";
-#$url = "../uploads/patu--20161114_153234.gpx";
+
 
 if (!isset($_SESSION["userId"])){
 	//suunan sisselogimise lehele

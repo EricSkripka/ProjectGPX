@@ -142,8 +142,6 @@ $userInterests = $Interest->getUser();
         <div class="col-xs-12 col-sm-9">
           <h1>Tere tulemast <?=$_SESSION["firstName"];?> <?=$_SESSION["lastName"];?>!</h1>
 
-			<?#=$msg;?>
-			
 			<!-- Prinib välja kasutaja enda hobid -->
 			<h3>Minu hobid</h3>
 			<?php
@@ -173,7 +171,6 @@ $userInterests = $Interest->getUser();
 					<?php if($answer2 == "" ){
 							error_reporting(0);
 							$answer2 = $_SESSION['note2'];
-							#unset($_SESSION["note2"]);
 							if($answer2 == "Salvestamine õnnestus."){ ?>
 								<p style="color:green;"><?=$answer2;?></p>
 							<?php } else { ?>
@@ -196,7 +193,6 @@ $userInterests = $Interest->getUser();
 						$answer = $_SESSION['note'];?>
 						<p style="color:green;"><?=$answer;?></p>
 						<?php
-						#unset($_SESSION["note"]);}
 						}
 						?>
 

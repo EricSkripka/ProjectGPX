@@ -22,6 +22,7 @@ $signupFirstNameError = "";
 $signupUsername = "";
 $signupLastName = "";
 $signupLastNameError = "";
+$notice = "";
 
 //kontrollin kasutaja loomisel sisestavaid väärtusi
 if(isset($_POST["signupEmail"])){
@@ -105,7 +106,6 @@ if(isset($_POST["signupEmail"]) &&
 		$User->signUp($signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
 }
 
-$notice = "";
 
 if(isset($_POST["loginEmail"])){
 	if(!empty($_POST["loginEmail"])){
