@@ -30,11 +30,11 @@ if (!isset($_SESSION["userId"])){
 	exit();
 }
 
-
+#võtab Change.class.php lehelt muutuja. Kuna ei osanud note-i defineerida, siis on selle ees funktsioon, et ei näitaks errorit
 error_reporting(0);	
 $answer = $_SESSION['note'];
 
-
+#kontrollib, kas on sisestatud uus kasutajanimi
 if(isset($_POST["changeUsername"])) {
 	if(empty($_POST["changeUsername"])){
 		$changeUsernameError = "Kui tahad muuta enda kasutajanime, siis pead sisestama uue kasutajanime";
@@ -46,7 +46,7 @@ if(isset($_POST["changeUsername"])) {
 	}
 }
 
-
+#kontrollib, kas on sisestatud uus parool
 if(isset($_POST["changePassword"])) {
 	if(empty($_POST["changePassword"])){
 		$changePasswordError = "Kui tahad muuta enda parooli, siis pead sisestama uue parooli";
@@ -58,7 +58,7 @@ if(isset($_POST["changePassword"])) {
 	}
 }
 
-
+#kontrollib, kas on sisestatud uus e-mail
 if(isset($_POST["changeEmail"])) {
 	if(empty($_POST["changeEmail"])){
 		$changeEmailError = "Kui tahad muuta enda emaili, siis pead sisestama uue emaili";
@@ -70,7 +70,7 @@ if(isset($_POST["changeEmail"])) {
 	}
 }
 
-
+#kontrollib, kas on sisestatud uus eesnimi
 if(isset($_POST["changeFirstName"])) {
 	if(empty($_POST["changeFirstName"])){
 		$changeFirstNameError = "Kui tahad muuta enda eesnime, siis pead sisestama uue eesnime";
@@ -82,7 +82,7 @@ if(isset($_POST["changeFirstName"])) {
 	}
 }
 
-
+#kontrollib, kas on sisestatud uus perekonnanimi
 if(isset($_POST["changeLastName"])) {
 	if(empty($_POST["changeLastName"])){
 		$changeLastNameError = "Kui tahad muuta enda perekonnanime, siis pead sisestama uue perekonnanime";
@@ -94,7 +94,7 @@ if(isset($_POST["changeLastName"])) {
 	}
 }
 
-
+#kontrollib, kas on sisestatud uus sugu
 if( isset( $_POST["changeGender"] ) ){
 	if(!empty( $_POST["changeGender"] ) ){
 		$signupGender = $_POST["changeGender"];
@@ -110,12 +110,110 @@ if( isset( $_POST["changeGender"] ) ){
 <!DOCTYPE html>
 <html>
 	<head>
-<?php require("../header.php");?>
-<h1><a href="data.php"> Tagasi</a></h1>
+	<!--Siis on kõik disainielemendid -->
+  <title>Project GPX</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Siin asub tagataust-->
+  <style>
+  body {
+  padding-top: 51px;
+  background-image: url("http://perthurbanrunners.com/wp-content/gallery/gallery/running-04.jpg");
+    background-color: #cccccc;
+}
+.text-center {
+  padding-top: 20px;
+}
+.col-xs-12 {
+  background-color: #fff;
+}
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+}
 
+/* collapsed sidebar styles */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -41.6%;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -41.6%;
+  }
+  .row-offcanvas-right.active {
+    right: 41.6%;
+  }
+  .row-offcanvas-left.active {
+    left: 41.6%;
+  }
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 41.6%;
+  }
+  #sidebar {
+    padding-top:0;
+  }
+}
+</style>
+	</head>
+
+	
+<div class="page-container">
+  
+	<!--Ülemine tööriba-->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="container">
+	   <a class="navbar-brand navbar-right" href="?logout=1">Logi välja</a>
+    	<div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="data.php">Project GPX</a>
+				
+    	</div>
+       </div>
+    </div>
+      
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+        <!--Paremal asuv riba -->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav">
+              <li class="active"><a href="data.php">Kodu</a></li>
+              <li><a href="user.php">Hobid</a></li>
+              <li><a href="upload.php">Lae üles</a></li>
+              <li><a href="change.php">Muuda andmeid</a></li>              
+            </ul>
+        </div>
+	
+<div class="col-xs-12 col-sm-9">
 <h1>Muuda enda andmeid</h1>
 <h3>Selleks, et muuta enda andmeid kirjuta lihstalt kastidesse uued andmed.</h3>
-<h3>Neid, mida muuta ei taha, jäta tühjaks.</h3><br><br>
+<h3>Neid, mida muuta ei taha, jäta tühjaks.</h3><br>
 
 <h3>Tulemus: <?php echo $answer; ?></h3><br>
 
@@ -126,7 +224,7 @@ if( isset( $_POST["changeGender"] ) ){
 	<div class="row">
 		<div class="col-sm-4 col-sm-offset-4">
 -->
-
+ <!--Uute andmete sisestamine-->
 		<form method="POST"> <br>
 			
 			<label>Muuda enda kasutajanime</label> <br>
@@ -166,4 +264,9 @@ if( isset( $_POST["changeGender"] ) ){
 	</div>
 </div>
 -->
+
+        </div><!-- /.col-xs-12 main -->
+    </div><!--/.row-->
+  </div><!--/.container-->
+</div><!--/.page-container-->
 </html>
