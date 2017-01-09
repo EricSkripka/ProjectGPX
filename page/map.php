@@ -1,13 +1,10 @@
 <?php  
 
 require("../../../config.php");
-require("../class/comment.class.php");
 require("../functions.php");
+require("../class/Comment.class.php");
 $comment = new comment($mysqli);
 
-
-require("../../../config.php");
-require("../functions.php");
 
 #kui ei ole sisse logitud siis suunab login.php lehele
 if (!isset($_SESSION["userId"])){
@@ -38,7 +35,7 @@ if(isset($_POST["Comment"])) {
 	}
 }
 
-$pets = $comment->get($fail);
+#$pets = $comment->get($fail);
 echo $commenterror;
 	
 
@@ -119,31 +116,31 @@ echo $commenterror;
       } 	  
     </script>
 	
-	<h1>KOMMENTAARID</h1>
+	<h1>Kommenteeri</h1>
 	
 	
 	<?php
 	
-	foreach($pets as $c){
+	#foreach($pets as $c){
 		// iga auto on $c
 		//echo $c->plate."<br>";
 		
-		$html .= "<tr>";
-			$html .= "<td>".$c->user_id."</td>";
-			$html .= "<td>".$c->comment."</td>";
+	#	$html .= "<tr>";
+	#		$html .= "<td>".$c->user_id."</td>";
+	#		$html .= "<td>".$c->comment."</td>";
 			
 			
-		$html .= "</tr>";
-	}
+	#	$html .= "</tr>";
+	#}
 	
-	$html .= "</table>";
+	#$html .= "</table>";
 	
-	echo $html;
+	#echo $html;
 	
 	?>
 	
 	<form method="post">
-    <textarea id="Comment" name="Comment"></textarea>
+    <textarea rows="4" cols="100" name="Comment"></textarea>
     <input type="submit" name="submit" value="submit" id="submit"/>
 	</form>
 	

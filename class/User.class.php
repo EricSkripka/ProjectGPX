@@ -20,7 +20,7 @@ class User {
 		//panen Ühenduse kinni
 		$stmt->close();
 	}
-		
+	
 	function login($loginEmail, $loginPassword) {
 
 		$error = "";
