@@ -1,13 +1,11 @@
 <?php  
-
 require("../../../config.php");
 require("../class/comment.class.php");
 require("../functions.php");
 $comment = new comment($mysqli);
 
 
-require("../../../config.php");
-require("../functions.php");
+
 
 #kui ei ole sisse logitud siis suunab login.php lehele
 if (!isset($_SESSION["userId"])){
@@ -40,6 +38,8 @@ if(isset($_POST["Comment"])) {
 
 $pets = $comment->get($fail);
 echo $commenterror;
+
+
 	
 
 
@@ -124,19 +124,28 @@ echo $commenterror;
 	
 	<?php
 	
+	$html .="<table>";
+	
 	foreach($pets as $c){
 		// iga auto on $c
 		//echo $c->plate."<br>";
 		
+		
+	
 		$html .= "<tr>";
 			$html .= "<td>".$c->user_id."</td>";
 			$html .= "<td>".$c->comment."</td>";
 			
 			
 		$html .= "</tr>";
+		
+	
+	
 	}
 	
 	$html .= "</table>";
+	
+	
 	
 	echo $html;
 	

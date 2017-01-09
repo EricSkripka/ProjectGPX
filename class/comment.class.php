@@ -24,7 +24,7 @@ class comment {
 	function get() {
 
 	$stmt = $this->connection->prepare("
-			SELECT userid, comment
+			SELECT user_id, comment
 			FROM project_kommentaar WHERE mapname=?
 			
 		");
