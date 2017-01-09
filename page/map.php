@@ -1,8 +1,23 @@
 <?php  
+
 require("../../../config.php");
 require("../class/comment.class.php");
 require("../functions.php");
 $comment = new comment($mysqli);
+
+
+require("../../../config.php");
+require("../functions.php");
+
+#kui ei ole sisse logitud siis suunab login.php lehele
+if (!isset($_SESSION["userId"])){
+	//suunan sisselogimise lehele
+	header("Location: data.php");	
+	exit();
+}
+
+
+
 #võtan url-i realt muutuja
 $fail = $_GET['map'];
 #Kuvan ka üleval selle faili nime
@@ -101,7 +116,7 @@ echo $commenterror;
 		  }
 		});
 		
-      }  
+      } 	  
     </script>
 	
 	<h1>KOMMENTAARID</h1>
