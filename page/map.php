@@ -1,10 +1,33 @@
 <?php  
-
+require("../../../config.php");
+require("../class/comment.class.php");
+require("../functions.php");
+$comment = new comment($mysqli);
 #võtan url-i realt muutuja
 $fail = $_GET['map'];
 #Kuvan ka üleval selle faili nime
 
 $url = "../uploads/$fail";
+$Comment = "";
+$userid = $_SESSION["userId"];
+$commenterror = "";
+
+if(isset($_POST["Comment"])) {
+	if(empty($_POST["Comment"])){
+		$commenterror = "kommentaari sisestamine on kohustuslik";
+	} else {
+		$_POST["Comment"] = $Helper->cleanInput($_POST["Comment"]);
+		$Comment = $_POST["Comment"];
+		$comment->savecomment($userid, $fail, $Comment);
+		
+	}
+}
+
+$pets = $comment->get($fail);
+echo $commenterror;
+	
+
+
 
 ?>
 <!DOCTYPE html>
@@ -80,4 +103,40 @@ $url = "../uploads/$fail";
 		
       }  
     </script>
+	
+	<h1>KOMMENTAARID</h1>
+	
+	
+	<?php
+	
+	foreach($pets as $c){
+		// iga auto on $c
+		//echo $c->plate."<br>";
+		
+		$html .= "<tr>";
+			$html .= "<td>".$c->user_id."</td>";
+			$html .= "<td>".$c->comment."</td>";
+			
+			
+		$html .= "</tr>";
+	}
+	
+	$html .= "</table>";
+	
+	echo $html;
+	
+	?>
+	
+	<form method="post">
+    <textarea id="Comment" name="Comment"></textarea>
+    <input type="submit" name="submit" value="submit" id="submit"/>
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
 </html>
