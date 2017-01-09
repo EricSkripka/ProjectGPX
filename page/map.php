@@ -166,7 +166,7 @@ print_r ($pets);
 		//echo $c->plate."<br>";
 		
 		$html .= "<tr>";
-			$html .= "<td>".$c->user_id."</td>";
+			$html .= "<td>".$c->username."</td>";
 			$html .= "<td>".$c->comment."</td>";
 		$html .= "</tr>";
 	}

@@ -24,12 +24,9 @@ class comment {
 	function get($fail) {
 
 	$stmt = $this->connection->prepare("
-			SELECT user_id, comment
-			FROM project_kommentaar WHERE mapname=?
-			
-		");
+			SELECT username, comment FROM project_kommentaar JOIN project_user on project_user.id=project_kommentaar.user_id WHERE mapname=?");
 			$stmt->bind_param("s", $fail);
-			$stmt->bind_result($userid, $comment);
+			$stmt->bind_result($username, $comment);
 			$stmt->execute();
 			echo $this->connection->error;
 					
@@ -43,7 +40,7 @@ class comment {
 			//tekitan objekti
 			$somments = new StdClass();
 			
-			$somments->user_id = $userid;
+			$somments->username = $username;
 			$somments->comment = $comment;
 
 			// iga kord massiivi lisan juurde nr märgi
