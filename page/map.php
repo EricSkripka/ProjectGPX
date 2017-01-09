@@ -1,13 +1,9 @@
 <?php  
 require("../../../config.php");
 require("../functions.php");
-require("../class/Comment.class.php");
+require("../class/comment.class.php");
 $comment = new comment($mysqli);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c85b5f42aec989a6fb50cd805779232769b92b7
 
 #kui ei ole sisse logitud siis suunab login.php lehele
 if (!isset($_SESSION["userId"])){
@@ -38,12 +34,12 @@ if(isset($_POST["Comment"])) {
 	}
 }
 
-#$pets = $comment->get($fail);
+$pets = $comment->get($fail);
 echo $commenterror;
 
 
 	
-
+print_r ($pets);
 
 
 ?>
@@ -126,28 +122,26 @@ echo $commenterror;
 	
 	<?php
 	
-	$html .="<table>";
+	#$html .="<table>";
 	
-	foreach($pets as $c){
+	#foreach($pets as $c){
 		// iga auto on $c
 		//echo $c->plate."<br>";
 		
 		
 	
-		$html .= "<tr>";
-			$html .= "<td>".$c->user_id."</td>";
-			$html .= "<td>".$c->comment."</td>";
-			
-			
-		$html .= "</tr>";
+		#$html .= "<tr>";
+			#$html .= "<td>".$c->user_id."</td>";
+			#$html .= "<td>".$c->comment."</td>";
+		#$html .= "</tr>";
 		
 	
 	
-	}
+	#}
 
-	$html .="</table>";
+	#$html .="</table>";
 	
-	echo $html;
+	#echo $html;
 
 	
 	?>
@@ -157,11 +151,35 @@ echo $commenterror;
     <input type="submit" name="submit" value="submit" id="submit"/>
 	</form>
 	
+	<?php
+	
+	$html = "<table>";
+	
+	$html .= "<tr>";
+		$html .= "<th>id</th>";
+		$html .= "<th>comment</th>";
+	$html .= "</tr>";
+	
+	//iga liikme kohta massiivis
+	foreach($pets as $c){
+		// iga auto on $c
+		//echo $c->plate."<br>";
+		
+		$html .= "<tr>";
+			$html .= "<td>".$c->user_id."</td>";
+			$html .= "<td>".$c->comment."</td>";
+		$html .= "</tr>";
+	}
+	
+	$html .= "</table>";
+	
+	echo $html;
 	
 	
+	$listHtml = "<br><br>";
 	
 	
-	
+	?>
 	
 	
 </html>

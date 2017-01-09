@@ -21,7 +21,7 @@ class comment {
 		$stmt->close();
 	}
 	
-	function get() {
+	function get($fail) {
 
 	$stmt = $this->connection->prepare("
 			SELECT user_id, comment
