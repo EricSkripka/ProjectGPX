@@ -154,6 +154,7 @@ print_r ($pets);
 	<?php
 	
 	$html = "<table>";
+	$html = "<table class='table table-striped table-bordered'>";
 	
 	$html .= "<tr>";
 		$html .= "<th>id</th>";
