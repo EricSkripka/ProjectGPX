@@ -12,8 +12,8 @@ class User {
 		$stmt->bind_param("ssssss",$signupUsername, $password, $signupEmail, $signupFirstName, $signupLastName, $signupGender);
 		
 		//täida käsu
-		if($stmt->execute()) {
-			echo "Salvestamine õnnestus";
+		if($stmt->execute()) { 
+			echo "<div style='text-align:center'><h1 style=color:green;>Kasutaja on loodud!</h1></div>";
 			header( "refresh:2; url=login.php" );
 		} else {
 			echo "ERROR ".$stmt->error;

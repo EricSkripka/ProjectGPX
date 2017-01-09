@@ -2,8 +2,8 @@
 require("../../../config.php");
 require("../functions.php");
 require("../class/comment.class.php");
-$comment = new comment($mysqli);
 
+$comment = new comment($mysqli);
 
 #kui ei ole sisse logitud siis suunab login.php lehele
 if (!isset($_SESSION["userId"])){
@@ -12,35 +12,30 @@ if (!isset($_SESSION["userId"])){
 	exit();
 }
 
-
-
 #võtan url-i realt muutuja
 $fail = $_GET['map'];
+$answerComment = "";
+
 #Kuvan ka üleval selle faili nime
 
 $url = "../uploads/$fail";
 $Comment = "";
 $userid = $_SESSION["userId"];
 $commenterror = "";
-
 if(isset($_POST["Comment"])) {
 	if(empty($_POST["Comment"])){
-		$commenterror = "kommentaari sisestamine on kohustuslik";
+		$commenterror = "Kui tahad kommenteerida, siis pead ka kasti sisse kirjutama";
 	} else {
 		$_POST["Comment"] = $Helper->cleanInput($_POST["Comment"]);
 		$Comment = $_POST["Comment"];
-		$comment->savecomment($userid, $fail, $Comment);
+		$comment->saveComment($userid, $fail, $Comment);
 		
 	}
 }
 
-$pets = $comment->get($fail);
-echo $commenterror;
-
+$pets = $comment->getComment($fail);
 
 	
-
-
 ?>
 <!DOCTYPE html>
 <?php require("../header.php");?>
@@ -97,7 +92,6 @@ echo $commenterror;
 			  points.push(p);
 			  bounds.extend(p);
 			});
-
 			var poly = new google.maps.Polyline({
 			  // use your own style here
 			  path: points,
@@ -116,54 +110,24 @@ echo $commenterror;
       } 	  
     </script>
 	
-	<h1>Kommenteeri</h1>
-	
-	
-	<?php
-	
-	#$html .="<table>";
-	
-	#foreach($pets as $c){
-		// iga auto on $c
-		//echo $c->plate."<br>";
-		
-		
-	
-		#$html .= "<tr>";
-			#$html .= "<td>".$c->user_id."</td>";
-			#$html .= "<td>".$c->comment."</td>";
-		#$html .= "</tr>";
-		
-	
-	
-	#}
-
-	#$html .="</table>";
-	
-	#echo $html;
-
-	
-	?>
+<h1>Kommenteeri</h1>
 	
 	<form method="post">
-    <textarea rows="4" cols="100" name="Comment"></textarea>
-    <input type="submit" name="submit" value="submit" id="submit"/>
-	</form>
+    <textarea rows="4" cols="100" name="Comment"></textarea> <p style="color:red;"><?=$commenterror?></p><br>
+    <input type="submit" name="submit" value="Sisesta" /><br><br>
+</form>
 	
-	<?php
+<?php
 	
 	$html = "<table>";
 	$html = "<table class='table table-striped table-bordered'>";
 	
 	$html .= "<tr>";
-		$html .= "<th>id</th>";
-		$html .= "<th>comment</th>";
+		$html .= "<th>Kasutaja</th>";
+		$html .= "<th>Kommentaar</th>";
 	$html .= "</tr>";
 	
-	//iga liikme kohta massiivis
 	foreach($pets as $c){
-		// iga auto on $c
-		//echo $c->plate."<br>";
 		
 		$html .= "<tr>";
 			$html .= "<td>".$c->username."</td>";
@@ -172,14 +136,9 @@ echo $commenterror;
 	}
 	
 	$html .= "</table>";
-	
 	echo $html;
-	
-	
 	$listHtml = "<br><br>";
 	
-	
-	?>
-	
+?>
 	
 </html>

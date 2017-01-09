@@ -24,15 +24,12 @@ if(isset($_POST["loginEmail"])){
 	if(!empty($_POST["loginEmail"])){
 		$_POST["loginEmail"] = $Helper->cleanInput($_POST["loginEmail"]);
 		$loginEmail = $_POST["loginEmail"];
-		#$notice = $User->login($_POST["loginEmail"]); 
 		if (isset($_POST["loginEmail"]) && isset($_POST["loginPassword"]) && 
 			!empty($_POST["loginEmail"]) && !empty($_POST["loginPassword"])){
 				$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
 				$loginEmail = $_POST["loginEmail"];
 		} else {
-			#$notice = $User->login($_POST["loginEmail"], $_POST["loginPassword"]);
 			$loginEmail = $_POST["loginEmail"];
-			#$loginEmailError = "Sisselogimiseks peab sisestama e-maili";
 			$loginPasswordError = "Sisselogimiseks peab sisetama parooli";
 		}
 	}

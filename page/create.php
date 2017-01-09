@@ -24,6 +24,7 @@ $signupLastName = "";
 $signupLastNameError = "";
 $notice = "";
 
+
 //kontrollin kasutaja loomisel sisestavaid väärtusi
 if(isset($_POST["signupEmail"])){
 	if(empty($_POST["signupEmail"])){
@@ -161,6 +162,7 @@ if(isset($_POST["loginEmail"])){
 				
 			<input class="btn btn-success btn-sm-block visible-xs-block" type="submit" value="Loo kasutaja">
 			<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Loo kasutaja"><br><br>
+			
 			
 			<p>Kasjutaja olemas?<a href="login.php"> Vajuta Siia</a></p>
 		

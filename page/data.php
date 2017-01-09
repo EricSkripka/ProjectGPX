@@ -151,11 +151,7 @@ if (isset($_GET["logout"])) {
 			<?php	
 				}
 			}
-			?>	
-
-    
-          
-          
+			?>
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
   </div><!--/.container-->

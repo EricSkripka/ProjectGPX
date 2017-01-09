@@ -3,26 +3,24 @@ class comment {
 	private $connection;
 			
 		function __construct($mysqli){
-			
 			$this->connection = $mysqli;
 		}	
 	
-	function savecomment($userid, $fail, $comment) {
+	function saveComment($userid, $fail, $comment) {
 		$stmt = $this->connection->prepare("INSERT INTO project_kommentaar (user_id, mapname, comment) VALUES (?, ?, ?)");
 		echo $this->connection->error;
 		$stmt->bind_param("iss",$userid, $fail, $comment);
 		
 		if($stmt->execute()) {
-			echo "Salvestamine õnnestus";
+			$answerComment = "Kommentaari salvestamine Ãµnnestus";
 		} else {
 			echo "ERROR ".$stmt->error;
 		}
-		//panen Ühenduse kinni
+		//panen Ãœhenduse kinni
 		$stmt->close();
 	}
 	
-	function get($fail) {
-
+	function getComment($fail) {
 	$stmt = $this->connection->prepare("
 			SELECT username, comment FROM project_kommentaar JOIN project_user on project_user.id=project_kommentaar.user_id WHERE mapname=?");
 			$stmt->bind_param("s", $fail);
@@ -42,17 +40,11 @@ class comment {
 			
 			$somments->username = $username;
 			$somments->comment = $comment;
-
-			// iga kord massiivi lisan juurde nr märgi
+			// iga kord massiivi lisan juurde nr mÃ¤rgi
 			array_push($result, $somments);
 		}
-		
 		$stmt->close();
-		
-		
 		return $result;
 	}
-	
-
 }
 ?>
