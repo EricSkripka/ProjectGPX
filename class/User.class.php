@@ -14,13 +14,14 @@ class User {
 		//täida käsu
 		if($stmt->execute()) {
 			echo "Salvestamine õnnestus";
+			header( "refresh:2; url=login.php" );
 		} else {
 			echo "ERROR ".$stmt->error;
 		}
 		//panen Ühenduse kinni
 		$stmt->close();
 	}
-	
+		
 	function login($loginEmail, $loginPassword) {
 
 		$error = "";

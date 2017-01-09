@@ -39,7 +39,6 @@ echo $commenterror;
 
 
 	
-print_r ($pets);
 
 
 ?>
