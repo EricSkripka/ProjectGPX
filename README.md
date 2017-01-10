@@ -19,6 +19,7 @@ Funktsionaalsus:
 	muuta oma kasutaja andmeid
 
 Tabelite loomise SQL laused:
+	
 	CREATE TABLE project_user(
 		id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 		username VARCHAR(50),
