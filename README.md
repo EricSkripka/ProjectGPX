@@ -1,22 +1,24 @@
-ProjectGPX
-rühma liikmed: Mattias Blehner, Sten-Erik Tool, Eric Skripka
+ProjectGPX rühma liikmed: Mattias Blehner, Sten-Erik Tool, Eric Skripka
+##ProjectGPX
+
+![projectgpx](https://cloud.githubusercontent.com/assets/22025406/21789759/08c42b54-d6e0-11e6-9465-54c6f7992bbe.jpg)
 
 Eesmärgid:
-	Kuvada lehel Google Mapsi
-	Lugeda GPX faili ja tekitada kaardile trajektorijoon
-	Radade kommenteerimise võimalus 
+	Kuvada lehel Google Mapsi,
+	Lugeda GPX faili ja tekitada kaardile trajektorijoon,
+	Radade kommenteerimise võimalus. 
 
 Kirjeldus: ProjectGPX on mõeldud kõikidele spordihuvilistele, kes soovivad oma läbitud 
 jooksu- või matkaradu kaardi pealt vaadata ja neid teistega jagada. Sarnased lehed on 
-endomondo.com, sports-tracker.com
+endomondo.com, sports-tracker.com.
 
 Funktsionaalsus:
-	teha kasutaja ja sisselogida
-	laadida üles GPX fail
-	vaadata enda ja ka teiste läbitud radu
-	kommenteerida radasid
-	lisada oma kasutaja hobid
-	muuta oma kasutaja andmeid
+	teha kasutaja ja sisselogida,
+	laadida üles GPX fail,
+	vaadata enda ja ka teiste läbitud radu,
+	kommenteerida radasid,
+	lisada oma kasutaja hobid,
+	muuta oma kasutaja andmeid.
 
 Tabelite loomise SQL laused:
 	
@@ -50,6 +52,8 @@ Tabelite loomise SQL laused:
 		comment TEXT,
 		FOREIGN KEY(user_id) REFERENCES project_user(id)	
 	);
+
+![projectgpxdb](https://cloud.githubusercontent.com/assets/22025406/21789111/3b1e3900-d6db-11e6-8735-aeea25260ab0.jpg)
 
 Kokkuvõtteks:
 
