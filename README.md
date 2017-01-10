@@ -1,40 +1,73 @@
-# PHP rühmatöö projekt
-**Rühmatööde demo päev** on valitud eksamipäev jaanuaris, kuhu tullakse terve rühmaga koos!
+ProjectGPX
+rühma liikmed: Mattias Blehner, Sten-Erik Tool, Eric Skripka
 
-## Tööjuhend
-1. Üks rühma liikmetest _fork_'ib endale käesoleva repositooriumi ning annab teistele kirjutamisõiguse/ligipääsu (_Settings > Collaborators_)
-1. Üks rühma liikmetest teeb esimesel võimaluse _Pull request_'i (midagi peab olema repositooriumis muudetud)
-1. Muuda repositooriumi README.md faili vastavalt nõutele
-1. Tee valmis korralik veebirakendus
+Eesmärgid:
+	Kuvada lehel Google Mapsi
+	Lugeda GPX faili ja tekitada kaardile trajektorijoon
+	Radade kommenteerimise võimalus 
 
-### Nõuded
+Kirjeldus: ProjectGPX on mõeldud kõikidele spordihuvilistele, kes soovivad oma läbitud 
+jooksu- või matkaradu kaardi pealt vaadata ja neid teistega jagada. Sarnased lehed on 
+endomondo.com, sports-tracker.com
 
-1. **README.md sisaldab:**
-    * suurelt projekti nime;
-    * suurelt projekti veebirakenduse pilt;
-    * rühma liikmete nimed;
-    * eesmärki (3-4 lauset, mis probleemi üritate lahendada);
-    * kirjeldus (sihtrühm, eripära võrreldes teiste samalaadsete rakendustega – kirjeldada vähemalt 2-3 sarnast rakendust mida eeskujuks võtta);
-    * funktsionaalsuse loetelu prioriteedi järjekorras, nt
-        * v0.1 Saab teha kasutaja ja sisselogida
-        * v0.2 Saab lisada huviala
-        * ...
-    * andmebaasi skeem loetava pildina + tabelite loomise SQL laused (kui keegi teine tahab seda tööle panna);
-    * **kokkuvõte:** mida õppisid juurde? mis ebaõnnestus? mis oli keeruline? (kirjutab iga tiimi liige).
+Funktsionaalsus:
+	teha kasutaja ja sisselogida
+	laadida üles GPX fail
+	vaadata enda ja ka teiste läbitud radu
+	kommenteerida radasid
+	lisada oma kasutaja hobid
+	muuta oma kasutaja andmeid
 
+Tabelite loomise SQL laused:
+	CREATE TABLE project_user(
+		id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		username VARCHAR(50),
+		password VARCHAR(255),
+		email VARCHAR(50),
+		firstname VARCHAR(50),
+		lastname VARCHAR(50),
+		gender VARCHAR(7)
+	);
 
-2. **Veebirakenduse nõuded:**
-    * rakendus on terviklik (täidab mingit funktsiooni ja sellega saab midagi teha);
-    * terve arenduse ajal on kasutatud _git_'i ja _commit_'ide sõnumid annavad edasi tehtud muudatuste sisu; 
-    * kasutusel on vähemalt 6 tabelit;
-    * kood on jaotatud klassidesse;
-    * koodis kasutatud muutujad/tabelid on inglise keeles;
-    * rakendus on piisava funktsionaalsusega ja turvaline;
-    * kõik tiimi liikmed on panustanud rakenduse arendusprotsessi.
+	CREATE TABLE project_user_interests(
+		id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		user_id INT(11),
+		interest_id(11),
+		FOREIGN KEY(user_id) REFERENCES project_user(id),
+		FOREIGN KEY(interest_id) REFERENCES project_interests(id)
+	);
 
-## Abiks
-* **Testserver:** greeny.cs.tlu.ee, [tunneli loomise juhend](http://minitorn.tlu.ee/~jaagup/kool/java/kursused/09/veebipr/naited/greenytunnel/greenytunnel.pdf)
-* **Abiks tunninäited (rühmade lõikes):** [I rühm](https://github.com/veebiprogrammeerimine-2016s?utf8=%E2%9C%93&query=-I-ruhm), [II rühm](https://github.com/veebiprogrammeerimine-2016s?utf8=%E2%9C%93&query=-II-ruhm), [III rühm](https://github.com/veebiprogrammeerimine-2016s?utf8=%E2%9C%93&query=-III-ruhm)
-* **Stiilijuhend:** [Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
-* **GIT õpetus:** [Become a git guru.](https://www.atlassian.com/git/tutorials/)
-* **Abimaterjale:** [Veebirakenduste loomine PHP ja MySQLi abil](http://minitorn.tlu.ee/~jaagup/kool/java/loeng/veebipr/veebipr1.pdf), [PHP with MySQL Essential Training] (http://www.lynda.com/MySQL-tutorials/PHP-MySQL-Essential-Training/119003-2.html)
+	CREATE TABLE project_interests(
+		id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		interest VARCHAR(255)
+	);
+
+	CREATE TABLE project_kommentaar(
+		id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+		user_id INT(11),
+		mapname VARCHAR(120),
+		comment TEXT,
+		FOREIGN KEY(user_id) REFERENCES project_user(id)	
+	);
+
+Kokkuvõtteks:
+
+Mattias Blehner: Kuidas muutujaid kahe lehe vahel liigutada, natuke õppisin juurde, 
+kuidas veebilehte kujundada ja faile üleslaadida. Mõne kohapeal ei näita välja errorid 
+korralikult ja algselt oleks tahtnud saada .gpx failist ka teist infot, mitte ainult raja 
+ning oleks tahtnud kasutada Google Maps-i asemel orienteerumiskaarti.
+Minu jaoks oli kõige keerulisem osa .gpx fail kaustast väljalugemine ja saada see kaardil 
+korralikult avanema. Algselt üritasin teha seda kõike sama lehe peal aga see osutus ülejõu käivaks.
+
+Eric Skripka: Selle grupitöö käigus õppisin üldiselt paremini koodi mõistma ja ka seda, kui oluline on koodi
+arusaadavalt üles ehitada, eriti grupitöö puhul, kus mitu inimest töötab sama punkti kallal. Algul 
+tahtsime võimaldada lehel kahe raja võrdlemist, kuid selleni me ei jõudnud, kuna kaardi kuvamine 
+lehel ei tulnud nii välja, nagu tahtsime. 
+
+Sten-Erik Tool: Juurde õppisin väga palju, peamiselt just seda kuidas kood toimib ja millises 
+järjekorras asju sisse loetakse. Samuti sain paremini selgeks kuidas andmeid massiividest 
+välja lugeda. Ebaõnnestus koodi puhtana hoidmine, mis oli minu jaoks kõige raskem. Ridade 
+vahel on igasuguseid ebavajalikke kommentaare ja treppimine on osades kohtades kohutav. 
+Keeruline oli kõik kujundamisega seonduv, kuna ma polnud sellega varem väga kokku puutunud, 
+siis ei osanud väga midagi tarka seal teha. Asi jäi ikkagi väga keeruliseks ja ega väga midagi 
+targemaks selle koha pealt ei saanud.
